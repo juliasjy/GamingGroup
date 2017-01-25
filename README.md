@@ -1,19 +1,19 @@
-node_model:  
+Node_model:  
   server side libraries  
   
-policies(optional):  
+Policies(optional):  
   .js  
   for example: cast the username to lower_case  
 
-public(static):  
+Public(static):  
   Images, Styles(css),Javascripte  
   
-routes:  
+Routes:  
   request handler(nodejs)  
     
-service(optional):  
+Service(optional):  
   request function access database  
 
-views:  
+Views:  
   put the html files  
 
