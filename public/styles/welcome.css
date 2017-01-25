@@ -1,0 +1,41 @@
+body{
+	padding:20px;
+	padding-left:50px; 
+	padding-right:50px; 
+}
+.fight-container{
+	padding-left:80px; 
+	padding-right:80px; 
+}
+.title{
+	font-family:fantasy;
+	color:#4B38A8;
+	margin-bottom:0px;
+}
+
+.recommand-button{
+	margin:auto;
+	display: block;
+}
+.links{
+	font-family:fantasy;
+	font-size:150%;
+}
+.C-description{
+	font-family:fantasy;
+	font-size:130%;
+}
+.result{
+	font-size:200%;
+	font-family:fantasy;
+}
+.user{
+	float:right;
+	font-family:fantasy;
+	font-size:130%;
+	padding-right:60px;
+}
+.date{
+	font-size:200%;
+	font-family:fantasy;
+}	
