@@ -1,10 +1,10 @@
 var mssql = require('mssql');  
 var db = {};  
 var config = {  
-  user: 'wuy8',  
-  password: 'wyl1995',  
+  user: '**',  
+  password: '**',  
   server: 'titan.csse.rose-hulman.edu',   
-  database: 'NWindwuy81710',  
+  database: '**',  
   port:1433,  
   options: {  
     encrypt: true // Use this if you're on Windows Azure  
