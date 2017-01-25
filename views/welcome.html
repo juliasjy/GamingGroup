@@ -1,23 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>
-function myFunction()
-{
-var db = require('../public/js/mydb');  
-var test = db.sql('select * from Login',function(err,result){  
-    if (err) {  
-        console.log(err);  
-        return;  
-    }  
-    document.write(result.length);  
-});  
-document.getElementById("demo").innerHTML=test;
-}
-</script>
+	<!--local-->
+	<link rel="stylesheet" href="../public/styles/welcome.css"></link>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+	<script type="text/javascript" src="../public/js/welcome.js"></script>
+	<!-- bootstrap-->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+	<!--title-->
+	<title>Welcome to Gameing Group</title>
 </head>
 <body>
-<p id="demo">A Paragraph.</p>
-<button type="button" onclick="myFunction()">点击这里</button>
+	
+	<div class="links"><a href="games.html">Games!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<a href="friendlist.html">FriendsList!</a> <div class="user">Welcome! UserName</div></div>
+	
+	<hr>
+	<div class="fight-container" >
+		<h1 class="title">Fight</h1>
+		<table class="table table-hover">
+			<tr>
+				<td>
+					<p class = "date"> 2017-01-05 </p>
+				</td>
+				<td>
+					<img src="../public/images/Ctouma.jpg" alt="Ctouma" width="384" height="216">
+					<div class ="C-description">Touma community</div> 
+				</td>
+				<td>
+					<img src="../public/images/Csetsuna.jpg" alt="Csetsuna" width="384" height="216">
+					<div class ="C-description">Setsuna community</div> 
+				</td>
+				<td>
+					<p class="result">Touma community Win!</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p class = "date"> 2017-01-12 </p>
+				</td>
+				<td>
+					<img src="../public/images/Cbilibili.jpg" alt="Cbilibili" width="384" height="216">
+					<div class ="C-description">Bilibili community</div> 
+				</td>
+				<td>
+					<img src="../public/images/Cacfun.jpg" alt="Ccafun" width="384" height="216">
+					<div class ="C-description">Acfun community</div> 
+				</td>
+				<td>
+					<p class="result">Bilibili community Win!</p>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<p class = "date"> 2017-01-13 </p>
+				</td>
+				<td>
+					<img src="../public/images/Cdota2.jpg" alt="Cdota2" width="384" height="216">
+					<div class ="C-description">Dota2 community</div> 
+				</td>
+				<td>
+					<img src="../public/images/Clol.png" alt="CLOL" width="384" height="216">
+					<div class ="C-description">LoL community</div> 
+				</td>
+				<td>
+					<p class="result">Dota2 community Win!</p>
+				</td>
+			</tr>
+		</table>
+	</div>
+
 </body>
 </html>
