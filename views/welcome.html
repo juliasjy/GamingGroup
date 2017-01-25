@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+function myFunction()
+{
+var db = require('../public/js/mydb');  
+var test = db.sql('select * from Login',function(err,result){  
+    if (err) {  
+        console.log(err);  
+        return;  
+    }  
+    document.write(result.length);  
+});  
+document.getElementById("demo").innerHTML=test;
+}
+</script>
+</head>
+<body>
+<p id="demo">A Paragraph.</p>
+<button type="button" onclick="myFunction()">点击这里</button>
+</body>
+</html>

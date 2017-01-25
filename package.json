@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/juliasjy/GamingGroup/issues"
   },
-  "homepage": "https://github.com/juliasjy/GamingGroup#readme"
+  "homepage": "https://github.com/juliasjy/GamingGroup#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
