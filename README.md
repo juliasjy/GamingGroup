@@ -1,5 +1,6 @@
 Node_model:  
   server side libraries  
+  //Added
   
 Policies(optional):  
   .js  
@@ -7,6 +8,7 @@ Policies(optional):
 
 Public(static):  
   Images, Styles(css),Javascripte  
+  添加了db.js 连接到mssql, 需要修改user password, 地址和database名字
   
 Routes:  
   request handler(nodejs)  
