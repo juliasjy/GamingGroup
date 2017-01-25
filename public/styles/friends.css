@@ -1,0 +1,25 @@
+.user-name{
+	display:inline-block;
+	float:right;
+}
+.search{
+
+	width:100%;
+}
+.display-name{
+  fnot-family:fantasy;
+  color:#003399;
+  margin-bottom: 2px;
+}
+.title{
+	font-family:fantasy;
+	color:#800000;
+	margin-bottom:0px;
+}
+.search-input{
+	width:70%;
+}
+.search-button{
+	margin-left:20px;
+	width:10%;
+}
