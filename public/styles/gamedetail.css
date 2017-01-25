@@ -1,0 +1,15 @@
+body{
+	padding:20px;
+}
+
+.title{
+	font-family:fantasy;
+	color:#800000;
+	margin-top:0px;
+	margin-bottom:0px;
+}
+
+.image{
+	width:90%;
+	height:40%;
+}
