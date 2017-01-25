@@ -1,16 +1,11 @@
 var express=require('express');
 var app=express();
 app.get('/',function(req,res){
- var sql=require('mssql');
+var sql=require('mssql');
  
 //config for your database
- var config={
-    user:'wuy8',
-    password:'wyl1995',
-	server: 'titan.csse.rose-hulman.edu',   
-	database: 'NWindwuy81710',  
- };
- 
+
+ var config = require('config.json');
 //connect to your database
  sql.connect(config,function (err) {
    if(err) console.log(err);
