@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script type="text/javascript" src="/include/jquery/jquery-1.1.3.1.pack.js"></script>
+<form name="form1" id="form1" action="ajax.aspx?action=1" method="post">
+   <input type="text" id="comid" name="comid" value="111">
+   <input type="text" id="jobid" name="jobid" value="222">
+   <input type="text" id="userid" name="userid" value="333">
+   <input type="submit" /></form>
+<script language="javascript">
+$("#form1").submit
+    (
+       function()
+        {
+        login();
+        return false;
+        }
+    );
+function login()
+{
+var comid = $("#comid").val();
+var jobid = $("#jobid").val();
+var userid = $("#userid").val();
+$.ajax({
+    type: "POST",
+    url: "localhost:5050/test",
+    data: "action=1" + "&comid=" + comid + "&jobid=" + jobid + "&userid=" + userid,
+    beforeSend: function(){
+    },
+    success: function(msg){
+  if(msg=="success"){
+  alert("提交成功！")
+   }else {
+       alert("请不要重复提交！");
+    }
+    }
+});
+}
+</script>
+</html>
