@@ -13,7 +13,7 @@ Public(static):
 Routes:  
   request handler(nodejs)  
     
-###Service(optional):###  
+###Service(optional):  
   post to port 8080 with username to check exist or not in db
 
 Views:  
