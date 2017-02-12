@@ -2,7 +2,7 @@
   "name": "game_group",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./service/js/servers.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -17,6 +17,12 @@
   },
   "homepage": "https://github.com/juliasjy/GamingGroup#readme",
   "dependencies": {
-    "express": "^4.14.0"
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.16.1",
+    "express": "^4.14.1",
+    "jsonwebtoken": "^7.2.1",
+    "mongoose": "^4.8.2",
+    "morgan": "^1.8.1",
+    "mssql": "^3.3.0"
   }
 }

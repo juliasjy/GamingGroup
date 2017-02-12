@@ -1,0 +1,124 @@
+{\rtf1\ansi\deff0\deftab480
+
+{\fonttbl
+{\f000 Courier New;}
+{\f001 Courier New;}
+{\f002 Courier New;}
+{\f003 Courier New;}
+{\f004 Courier New;}
+{\f005 Courier New;}
+{\f006 Courier New;}
+}
+
+{\colortbl
+\red000\green000\blue000;
+\red255\green255\blue255;
+\red255\green128\blue000;
+\red255\green255\blue255;
+\red000\green000\blue255;
+\red255\green255\blue255;
+\red128\green128\blue128;
+\red255\green255\blue255;
+\red000\green000\blue128;
+\red255\green255\blue255;
+\red000\green000\blue000;
+\red255\green255\blue255;
+\red000\green000\blue000;
+\red255\green255\blue255;
+}
+
+\f0\fs20\cb13\cf12 \highlight3\cf2 7.8\highlight1\cf0  \highlight11\cf10 a\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight5\cf4\b USE\highlight1\cf0\b0  \highlight11\cf10 COMPANY\highlight1\cf0 \par
+\highlight5\cf4\b GO\highlight1\cf0\b0 \par
+\highlight5\cf4\b CREATE\highlight1\cf0\b0  \highlight5\cf4\b VIEW\highlight1\cf0\b0  \highlight11\cf10 DepartManager\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0 \par
+\highlight5\cf4\b SELECT\highlight1\cf0\b0  \highlight11\cf10 Dname\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 DepartmentName\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 Fname\highlight9\cf8\b +\highlight11\cf10\b0 Minit\highlight9\cf8\b +\highlight11\cf10\b0 Lname\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 Name\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 Salary\highlight1\cf0 \par
+\highlight5\cf4\b FROM\highlight1\cf0\b0  \highlight11\cf10 DEPARTMENT\highlight9\cf8\b ,\highlight11\cf10\b0 EMPLOYEE\highlight1\cf0 \par
+\highlight5\cf4\b WHERE\highlight1\cf0\b0  \highlight11\cf10 Mgr_ssn\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 Ssn\highlight1\cf0 \par
+\par
+\highlight3\cf2 7.8\highlight1\cf0  \highlight11\cf10 b\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight5\cf4\b USE\highlight1\cf0\b0  \highlight11\cf10 COMPANY\highlight1\cf0 \par
+\highlight5\cf4\b GO\highlight1\cf0\b0 \par
+\highlight5\cf4\b CREATE\highlight1\cf0\b0  \highlight5\cf4\b VIEW\highlight1\cf0\b0  \highlight11\cf10 ResearchEmployee\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0 \par
+\highlight5\cf4\b SELECT\highlight1\cf0\b0  \highlight11\cf10 e\highlight9\cf8\b .\highlight11\cf10\b0 Fname\highlight9\cf8\b +\highlight11\cf10\b0 e\highlight9\cf8\b .\highlight11\cf10\b0 Minit\highlight9\cf8\b +\highlight11\cf10\b0 e\highlight9\cf8\b .\highlight11\cf10\b0 Lname\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 EmployeeName\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 s\highlight9\cf8\b .\highlight11\cf10\b0 Fname\highlight9\cf8\b +\highlight11\cf10\b0 s\highlight9\cf8\b .\highlight11\cf10\b0 Minit\highlight9\cf8\b +\highlight11\cf10\b0 s\highlight9\cf8\b .\highlight11\cf10\b0 Lname\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 SupervisorName\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 Salary\highlight1\cf0 \par
+\highlight5\cf4\b FROM\highlight1\cf0\b0  \highlight11\cf10 EMPLOYEE\highlight1\cf0  \highlight11\cf10 e\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 EMPLOYEE\highlight1\cf0  \highlight11\cf10 s\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 DEPARTMENT\highlight1\cf0 \par
+\highlight5\cf4\b WHERE\highlight1\cf0\b0  \highlight11\cf10 e\highlight9\cf8\b .\highlight11\cf10\b0 Super_ssn\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 s\highlight9\cf8\b .\highlight11\cf10\b0 Ssn\highlight1\cf0  \highlight5\cf4\b AND\highlight1\cf0\b0  \par
+\tab   \highlight11\cf10 e\highlight9\cf8\b .\highlight11\cf10\b0 Dno\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 Dnumber\highlight1\cf0 \par
+\tab   \highlight11\cf10 Dname\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight7\cf6 'Research'\highlight1\cf0 \par
+\par
+\highlight3\cf2 7.8\highlight1\cf0  \highlight11\cf10 c\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight5\cf4\b USE\highlight1\cf0\b0  \highlight11\cf10 COMPANY\highlight1\cf0 \par
+\highlight5\cf4\b GO\highlight1\cf0\b0 \par
+\highlight5\cf4\b CREATE\highlight1\cf0\b0  \highlight5\cf4\b VIEW\highlight1\cf0\b0  \highlight11\cf10 ProjectInfo\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0 \par
+\highlight5\cf4\b SELECT\highlight1\cf0\b0  \highlight11\cf10 Pname\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 Dname\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight5\cf4\b COUNT\highlight9\cf8 (*)\highlight1\cf0\b0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 NumofEmpolyee\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight5\cf4\b SUM\highlight9\cf8 (\highlight11\cf10\b0 Hours\highlight9\cf8\b )\highlight1\cf0\b0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 TotalHours\highlight1\cf0 \par
+\highlight5\cf4\b FROM\highlight1\cf0\b0  \highlight11\cf10 PROJECT\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 DEPARTMENT\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 WORKS_ON\highlight1\cf0 \par
+\highlight5\cf4\b WHERE\highlight1\cf0\b0  \highlight11\cf10 Pno\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 Pnumber\highlight1\cf0  \highlight5\cf4\b AND\highlight1\cf0\b0 \par
+\tab   \highlight11\cf10 Dnum\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 Dnumber\highlight1\cf0 \par
+\highlight5\cf4\b GROUP\highlight1\cf0\b0  \highlight5\cf4\b BY\highlight1\cf0\b0  \highlight11\cf10 Pname\highlight1\cf0 \par
+\par
+\highlight3\cf2 7.8\highlight1\cf0  \highlight11\cf10 d\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight5\cf4\b USE\highlight1\cf0\b0  \highlight11\cf10 COMPANY\highlight1\cf0 \par
+\highlight5\cf4\b GO\highlight1\cf0\b0 \par
+\highlight5\cf4\b CREATE\highlight1\cf0\b0  \highlight5\cf4\b VIEW\highlight1\cf0\b0  \highlight11\cf10 TeamProjectInfo\highlight1\cf0  \highlight5\cf4\b AS\highlight1\cf0\b0 \par
+\highlight5\cf4\b SELECT\highlight1\cf0\b0  \highlight11\cf10 Pname\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 Dname\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight5\cf4\b COUNT\highlight9\cf8 (*)\highlight1\cf0\b0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 NumofEmpolyee\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight5\cf4\b SUM\highlight9\cf8 (\highlight11\cf10\b0 Hours\highlight9\cf8\b )\highlight1\cf0\b0  \highlight5\cf4\b AS\highlight1\cf0\b0  \highlight11\cf10 TotalHours\highlight1\cf0 \par
+\highlight5\cf4\b FROM\highlight1\cf0\b0  \highlight11\cf10 PROJECT\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 DEPARTMENT\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 WORKS_ON\highlight1\cf0 \par
+\highlight5\cf4\b WHERE\highlight1\cf0\b0  \highlight11\cf10 Pno\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 Pnumber\highlight1\cf0  \highlight5\cf4\b AND\highlight1\cf0\b0 \par
+\tab   \highlight11\cf10 Dnum\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 Dnumber\highlight1\cf0 \par
+\highlight5\cf4\b GROUP\highlight1\cf0\b0  \highlight5\cf4\b BY\highlight1\cf0\b0  \highlight11\cf10 Pname\highlight1\cf0 \par
+\highlight5\cf4\b HAVING\highlight1\cf0\b0  \highlight5\cf4\b COUNT\highlight9\cf8 (*)>\highlight3\cf2\b0 1\highlight1\cf0 \par
+\par
+\par
+\highlight3\cf2 7.9\highlight1\cf0  \highlight11\cf10 a\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight11\cf10 Allow\highlight9\cf8\b :\highlight1\cf0\b0 \par
+\tab \highlight11\cf10 D\highlight1\cf0 \tab \highlight11\cf10 C\highlight1\cf0 \tab \highlight11\cf10 Total_s\highlight1\cf0 \tab \tab \highlight11\cf10 Average_s\highlight1\cf0 \par
+\tab \highlight3\cf2 5\highlight1\cf0 \tab \highlight3\cf2 4\highlight1\cf0 \tab \highlight3\cf2 133000\highlight1\cf0 \tab \tab \highlight3\cf2 33250\highlight1\cf0 \par
+\tab \highlight3\cf2 4\highlight1\cf0 \tab \highlight3\cf2 3\highlight1\cf0 \tab \highlight3\cf2 93000\highlight1\cf0 \tab \tab \highlight3\cf2 31000\highlight1\cf0 \par
+\tab \highlight3\cf2 1\highlight1\cf0 \tab \highlight3\cf2 1\highlight1\cf0 \tab \highlight3\cf2 55000\highlight1\cf0 \tab \tab \highlight3\cf2 55000\highlight1\cf0 \par
+\tab \par
+\highlight3\cf2 7.9\highlight1\cf0  \highlight11\cf10 b\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight11\cf10 Allow\highlight9\cf8\b :\highlight1\cf0\b0 \par
+\tab \highlight11\cf10 D\highlight1\cf0 \tab \highlight11\cf10 C\highlight1\cf0 \tab \par
+\tab \highlight3\cf2 5\highlight1\cf0 \tab \highlight3\cf2 4\highlight1\cf0 \par
+\tab \par
+\highlight3\cf2 7.9\highlight1\cf0  \highlight11\cf10 c\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight11\cf10 Allow\highlight9\cf8\b :\highlight1\cf0\b0 \par
+\tab \highlight11\cf10 D\highlight1\cf0 \tab \highlight11\cf10 Average_s\highlight1\cf0 \par
+\tab \highlight3\cf2 5\highlight1\cf0 \tab \highlight3\cf2 33250\highlight1\cf0 \par
+\par
+\highlight3\cf2 7.9\highlight1\cf0  \highlight11\cf10 d\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight5\cf4\b Not\highlight1\cf0\b0  \highlight11\cf10 Allowed\highlight9\cf8\b :\highlight1\cf0\b0  \highlight11\cf10 We\highlight1\cf0  \highlight11\cf10 used\highlight1\cf0  \highlight5\cf4\b GROUP\highlight1\cf0\b0  \highlight5\cf4\b BY\highlight1\cf0\b0  \highlight5\cf4\b when\highlight1\cf0\b0  \highlight11\cf10 we\highlight1\cf0  \highlight11\cf10 created\highlight1\cf0  \highlight11\cf10 the\highlight1\cf0  \highlight5\cf4\b view\highlight9\cf8 ,\highlight1\cf0\b0  \highlight11\cf10 so\highlight1\cf0  \highlight11\cf10 we\highlight1\cf0  \highlight11\cf10 cannot\highlight1\cf0  \highlight5\cf4\b update\highlight1\cf0\b0  \highlight11\cf10 it\highlight9\cf8\b .\highlight1\cf0\b0 \par
+\par
+\highlight3\cf2 7.9\highlight1\cf0  \highlight11\cf10 e\highlight9\cf8\b )\highlight1\cf0\b0  \par
+\highlight5\cf4\b Not\highlight1\cf0\b0  \highlight11\cf10 Allowed\highlight9\cf8\b :\highlight1\cf0\b0  \highlight11\cf10 Same\highlight1\cf0  \highlight11\cf10 reason\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 we\highlight1\cf0  \highlight11\cf10 used\highlight1\cf0  \highlight5\cf4\b GROUP\highlight1\cf0\b0  \highlight5\cf4\b BY\highlight9\cf8 ,\highlight1\cf0\b0  \highlight11\cf10 so\highlight1\cf0  \highlight11\cf10 we\highlight1\cf0  \highlight11\cf10 cannot\highlight1\cf0  \highlight5\cf4\b delete\highlight1\cf0\b0  \highlight5\cf4\b rows\highlight1\cf0\b0  \highlight5\cf4\b in\highlight1\cf0\b0  \highlight5\cf4\b view\highlight9\cf8 .\highlight1\cf0\b0 \par
+\par
+\highlight3\cf2 7.18\highlight1\cf0  \highlight11\cf10 a\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight3\cf2 30\highlight9\cf8\b +\highlight3\cf2\b0 9\highlight9\cf8\b +\highlight3\cf2\b0 9\highlight9\cf8\b +\highlight3\cf2\b0 40\highlight9\cf8\b +\highlight3\cf2\b0 10\highlight9\cf8\b +\highlight3\cf2\b0 8\highlight9\cf8\b +\highlight3\cf2\b0 1\highlight9\cf8\b +\highlight3\cf2\b0 4\highlight9\cf8\b +\highlight3\cf2\b0 4\highlight9\cf8\b +\highlight3\cf2\b0 1\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 116\highlight1\cf0  \highlight11\cf10 bytes\highlight1\cf0 \par
+\par
+\highlight3\cf2 7.18\highlight1\cf0  \highlight11\cf10 b\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight11\cf10 bfr\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight5\cf4\b floor\highlight9\cf8 (\highlight3\cf2\b0 512\highlight9\cf8\b /\highlight3\cf2\b0 116\highlight9\cf8\b )\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 4\highlight1\cf0 \par
+\highlight11\cf10 b\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight5\cf4\b ceiling\highlight9\cf8 (\highlight3\cf2\b0 30000\highlight9\cf8\b /\highlight3\cf2\b0 4\highlight9\cf8\b )\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 7500\highlight1\cf0 \par
+\par
+\highlight3\cf2 7.18\highlight1\cf0  \highlight11\cf10 c\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight11\cf10 i\highlight9\cf8\b )\highlight1\cf0\b0  \tab \highlight11\cf10 bfri\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight5\cf4\b floor\highlight9\cf8 (\highlight3\cf2\b0 512\highlight9\cf8\b /(\highlight3\cf2\b0 6\highlight9\cf8\b +\highlight3\cf2\b0 9\highlight9\cf8\b ))\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 34\highlight1\cf0 \par
+\highlight11\cf10 ii\highlight9\cf8\b )\highlight1\cf0\b0  \highlight11\cf10 ri\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 b\highlight1\cf0  \highlight9\cf8\b =\highlight3\cf2\b0 7500\highlight1\cf0 \par
+\tab \highlight11\cf10 bi\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight5\cf4\b ceiling\highlight1\cf0\b0  \highlight9\cf8\b (\highlight3\cf2\b0 7500\highlight1\cf0  \highlight9\cf8\b /\highlight1\cf0\b0  \highlight3\cf2 34\highlight9\cf8\b )\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 221\highlight1\cf0 \par
+\highlight11\cf10 iii\highlight9\cf8\b )\highlight5\cf4 ceiling\highlight1\cf0\b0  \highlight9\cf8\b (\highlight3\cf2\b0 221\highlight1\cf0  \highlight9\cf8\b /\highlight1\cf0\b0  \highlight3\cf2 34\highlight9\cf8\b )\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 7\highlight1\cf0 \par
+\tab \highlight5\cf4\b ceiling\highlight1\cf0\b0  \highlight9\cf8\b (\highlight3\cf2\b0 7\highlight1\cf0  \highlight9\cf8\b /\highlight1\cf0\b0  \highlight3\cf2 34\highlight9\cf8\b )\highlight1\cf0\b0  \highlight9\cf8\b =\highlight3\cf2\b0 1\highlight1\cf0 \par
+\tab \highlight5\cf4\b first\highlight1\cf0\b0  \highlight9\cf8\b :\highlight1\cf0\b0  \highlight3\cf2 221\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight5\cf4\b second\highlight1\cf0\b0  \highlight9\cf8\b :\highlight1\cf0\b0  \highlight3\cf2 7\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 third\highlight9\cf8\b :\highlight1\cf0\b0  \highlight3\cf2 1\highlight1\cf0 \par
+\tab \highlight11\cf10 three\highlight1\cf0  \highlight11\cf10 levels\highlight1\cf0  \highlight5\cf4\b for\highlight1\cf0\b0  \highlight5\cf4\b index\highlight1\cf0\b0 \par
+\highlight11\cf10 iv\highlight9\cf8\b )\highlight1\cf0\b0  \highlight11\cf10 index_total\highlight9\cf8\b :\highlight1\cf0\b0  \highlight3\cf2 1\highlight9\cf8\b +\highlight3\cf2\b0 7\highlight9\cf8\b +\highlight3\cf2\b0 221\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 229\highlight1\cf0 \par
+\highlight11\cf10 v\highlight9\cf8\b )\highlight1\cf0\b0 \tab \highlight3\cf2 4\highlight1\cf0 \par
+\par
+\highlight3\cf2 7.18\highlight1\cf0  \highlight11\cf10 d\highlight9\cf8\b )\highlight1\cf0\b0 \par
+\highlight11\cf10 i\highlight9\cf8\b )\highlight1\cf0\b0  \tab \highlight11\cf10 bfri\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight5\cf4\b floor\highlight9\cf8 (\highlight3\cf2\b0 512\highlight1\cf0  \highlight9\cf8\b /\highlight1\cf0\b0  \highlight9\cf8\b (\highlight3\cf2\b0 7\highlight9\cf8\b +\highlight3\cf2\b0 9\highlight9\cf8\b ))\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 32\highlight1\cf0 \par
+\highlight11\cf10 ii\highlight9\cf8\b )\highlight1\cf0\b0 \tab \highlight11\cf10 ri\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight11\cf10 b\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 30000\highlight1\cf0 \par
+\tab \highlight11\cf10 bi\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight5\cf4\b ceiling\highlight9\cf8 (\highlight3\cf2\b0 30000\highlight9\cf8\b /\highlight3\cf2\b0 32\highlight9\cf8\b )\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 938\highlight1\cf0 \par
+\highlight11\cf10 iii\highlight9\cf8\b )\highlight5\cf4 ceiling\highlight9\cf8 (\highlight3\cf2\b0 938\highlight9\cf8\b /\highlight3\cf2\b0 34\highlight9\cf8\b )\highlight1\cf0\b0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 28\highlight1\cf0 \par
+\tab \highlight5\cf4\b ceiling\highlight9\cf8 (\highlight3\cf2\b0 28\highlight9\cf8\b /\highlight3\cf2\b0 34\highlight9\cf8\b )=\highlight3\cf2\b0 1\highlight1\cf0 \par
+\tab \highlight5\cf4\b first\highlight9\cf8 :\highlight3\cf2\b0 938\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight5\cf4\b second\highlight1\cf0\b0  \highlight9\cf8\b =\highlight3\cf2\b0 28\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 third\highlight9\cf8\b :\highlight1\cf0\b0  \highlight3\cf2 1\highlight1\cf0 \par
+\tab \highlight11\cf10 three\highlight1\cf0  \highlight11\cf10 levels\highlight1\cf0  \highlight5\cf4\b for\highlight1\cf0\b0  \highlight5\cf4\b index\highlight1\cf0\b0 \par
+\highlight11\cf10 iv\highlight9\cf8\b )\highlight1\cf0\b0  \highlight11\cf10 index_total\highlight9\cf8\b :\highlight1\cf0\b0  \highlight3\cf2 1\highlight9\cf8\b +\highlight3\cf2\b0 28\highlight9\cf8\b +\highlight3\cf2\b0 938\highlight1\cf0  \highlight9\cf8\b =\highlight1\cf0\b0  \highlight3\cf2 967\highlight1\cf0 \par
+\highlight11\cf10 v\highlight9\cf8\b )\highlight1\cf0\b0 \tab \highlight3\cf2 4\highlight1\cf0    \highlight11\cf10 we\highlight1\cf0  \highlight11\cf10 need\highlight1\cf0  \highlight11\cf10 searching\highlight1\cf0  \highlight5\cf4\b on\highlight1\cf0\b0  \highlight3\cf2 3\highlight1\cf0  \highlight11\cf10 blocks\highlight1\cf0  \highlight5\cf4\b and\highlight1\cf0\b0  \highlight5\cf4\b get\highlight1\cf0\b0  \highlight11\cf10 the\highlight1\cf0  \highlight5\cf4\b record\highlight1\cf0\b0  \highlight5\cf4\b in\highlight1\cf0\b0  \highlight11\cf10 the\highlight1\cf0  \highlight3\cf2 4\highlight11\cf10 th\highlight1\cf0  \highlight11\cf10 block\highlight9\cf8\b .\highlight1\cf0\b0  \highlight11\cf10 So\highlight1\cf0  \highlight11\cf10 I\highlight1\cf0  \highlight11\cf10 think\highlight1\cf0  \highlight11\cf10 it\highlight1\cf0  \highlight5\cf4\b is\highlight1\cf0\b0  \highlight3\cf2 4.\highlight1\cf0  \par
+\tab \highlight11\cf10 However\highlight9\cf8\b ,\highlight1\cf0\b0  \highlight11\cf10 I\highlight1\cf0  \highlight11\cf10 think\highlight1\cf0  \highlight3\cf2 3\highlight1\cf0  \highlight5\cf4\b is\highlight1\cf0\b0  \highlight11\cf10 also\highlight1\cf0  \highlight11\cf10 acceptable\highlight1\cf0  \highlight11\cf10 because\highlight1\cf0  \highlight11\cf10 we\highlight1\cf0  \highlight11\cf10 just\highlight1\cf0  \highlight5\cf4\b search\highlight1\cf0\b0  \highlight5\cf4\b on\highlight1\cf0\b0  \highlight3\cf2 3\highlight1\cf0  \highlight11\cf10 blocks\highlight9\cf8\b .\highlight1\cf0\b0  \highlight11\cf10 We\highlight1\cf0  \highlight5\cf4\b get\highlight1\cf0\b0  \highlight11\cf10 the\highlight1\cf0  \highlight5\cf4\b record\highlight1\cf0\b0  \highlight11\cf10 location\highlight1\cf0  \highlight5\cf4\b without\highlight1\cf0\b0  \highlight11\cf10 searching\highlight1\cf0  \highlight5\cf4\b on\highlight1\cf0\b0  \highlight3\cf2 4\highlight11\cf10 th\highlight1\cf0  \highlight11\cf10 block\highlight9\cf8\b .\highlight1\cf0\b0 \par
+\par
+\par
+\tab }
