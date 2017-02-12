@@ -13,8 +13,8 @@ Public(static):
 Routes:  
   request handler(nodejs)  
     
-Service(optional):  
-  request function access database  
+###Service(optional):###  
+  post to port 8080 with username to check exist or not in db
 
 Views:  
   put the html files  
