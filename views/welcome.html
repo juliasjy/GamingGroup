@@ -13,7 +13,7 @@
 </head>
 <body>
 	
-	<div class="links"><a href="games.html">Games!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friends.html">FriendsList!</a> <div class="user">Welcome! UserName</div></div>
+	<div class="links"><a href="games.html">Games!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friends.html">FriendsList!</a> <div class="user">Welcome! <div id="User"></div></div>
 	
 	<hr>
 	<div class="fight-container" >
@@ -69,6 +69,16 @@
 			</tr>
 		</table>
 	</div>
-
+	<script language="JavaScript">
+	function processForm(){
+		var parameters = location.search.substring(1).split("&");
+		var temp = parameters[0].split("=");
+		l = unescape(temp[1]);
+		document.getElementById('User').innerHTML =l;
+	}
+	processForm();
+	</script>
+	
+	
 </body>
 </html>
