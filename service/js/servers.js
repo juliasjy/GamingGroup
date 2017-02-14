@@ -33,7 +33,7 @@ app.get('/',function(req,res){
 
 //token
 apiRouter.post('/authenticate',function(req,res){
-    console.log(req.body.email);
+    console.log(req.body.Username);
     sql.connect(sqlconfig,function (err) {
         if(err) {
             console.log(err);
@@ -44,7 +44,7 @@ apiRouter.post('/authenticate',function(req,res){
             });
         }else {
             var request = new sql.Request();
-            request.query('EXEC ifPlayerExist' + ' "' + req.body.email + '"', function (err, recordset) {
+            request.query('EXEC ifPlayerExist' + ' "' + req.body.Username + '"', function (err, recordset) {
                     if (err) {
                         res.json({
                             success: false,
@@ -55,7 +55,7 @@ apiRouter.post('/authenticate',function(req,res){
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'","'+req.body.password+'"',function(err,recordset){
+                            loginrequest.query('EXEC playerLogin'+'"'+req.body.Username+'","'+req.body.Password+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,

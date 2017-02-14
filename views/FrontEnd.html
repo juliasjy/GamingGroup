@@ -28,28 +28,22 @@
 <script>
 var app = angular.module('my-app',[]);
 app.controller('myCtrl', function($scope){
-	$scope.submitMyForm = function(){
-	
+	$scope.submitLogin = function(){
 		var data = $scope.fields;
-		$http.post(url,data);
+		alert(data.Username);
+		$http.post('http://127.0.0.1:8080/api/authenticate',data);
+$http({
+method: 'POST',
+url: 'http://127.0.0.1:8080/api/authenticate',
+data: { email: 1, test: 2 },
+headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+})
+		console.log("test");
 	}
 	
 
 });
 
 </script>
-
-<script>
-functoin testJS(){
-var b= document.getElementById('textfield').value,
-	url = '/welcome.html?Username=' + encodeURIComponent(b);
-	
-	document.location.href = url;
-	console.log(url);
-	}
-</script>
-
-
-
 </body>
 </html>
