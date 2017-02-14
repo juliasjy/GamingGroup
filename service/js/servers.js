@@ -21,6 +21,7 @@ app.use(function(req,res,next){
     res.setHeader('Access-Control-Allow-Methods','GET, POST');
     res.setHeader('Access0Control-Allow-Headers','X_Requested-With,content-type ,\
     Authorization');
+    console.log(req.body);
     next();
 });
 

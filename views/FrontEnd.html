@@ -9,7 +9,7 @@
 <body>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<form id="Login" name = "LoginMsg" method = "POST" action = ./welcome.html ng-submit="submitLogin()" ng-app = "my-app" ng-controller = "myCtrl">
+<form id="Login" name = "LoginMsg" method = "POST" ng-submit="submitLogin()" ng-app = "my-app" ng-controller = "myCtrl">
 <p>
   <label for="textfield">Login:</label>
   <input type="text" name="textfield" id="textfield" ng-model = "fields.Username">
@@ -21,28 +21,28 @@
 
 {{fields}}
 <p>
-  <a href = ./welcome.html><input type="submit" name="submit" id="submit" value="Submit" onClick = "testJS()"></a>
+  <input type="submit" name="submit" id="submit" value="Submit" >
 </p>
 </form>
 
 <script>
 var app = angular.module('my-app',[]);
-app.controller('myCtrl', function($scope){
+app.controller('myCtrl',['$scope', '$http',function($scope,$http){
 	$scope.submitLogin = function(){
 		var data = $scope.fields;
-		alert(data.Username);
-		$http.post('http://127.0.0.1:8080/api/authenticate',data);
 $http({
 method: 'POST',
 url: 'http://127.0.0.1:8080/api/authenticate',
-data: { email: 1, test: 2 },
+data:data,
 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-})
-		console.log("test");
+});	
+		alert(data.Username);
+
 	}
 	
 
-});
+}]);
+
 
 </script>
 </body>
