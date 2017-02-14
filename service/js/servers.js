@@ -31,6 +31,7 @@ app.get('/',function(req,res){
     console.log('GET in /');
 });
 
+//token
 apiRouter.post('/authenticate',function(req,res){
     console.log(req.body.email);
     sql.connect(sqlconfig,function (err) {
@@ -53,8 +54,8 @@ apiRouter.post('/authenticate',function(req,res){
                     } else {
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
-                            var loginrequest = new sql.Requset();
-                            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+                            var loginrequest = new sql.Request();
+                            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'","'+req.body.password+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
@@ -193,14 +194,15 @@ apiRouter.get('/',function(req,res){
 //             else res.json(users);
 //         });
 //     });
-apiRouter.route('/users/:user_id')
-    .get(function(req,res){
-        console.log("get user_id");
-        User.findById(req.params.user_id,function(err,user){
-            if(err)res.send(err);
-            res.json(user);
-        });
-    })
+//
+// apiRouter.route('/users/:user_id')
+//     .get(function(req,res){
+//         console.log("get user_id");
+//         User.findById(req.params.user_id,function(err,user){
+//             if(err)res.send(err);
+//             res.json(user);
+//         });
+//     })
     // .delete(function(req,res){
     //     User.remove({
     //         _id:req.params.user_id}
@@ -209,22 +211,23 @@ apiRouter.route('/users/:user_id')
     //         res.json({message:'Successfully deleted'});
     //         });
     //     })
-    .put(function(req,res){
-        User.findById(req.params.user_id,function(err,user){
-            if(err)res.send(err);
-            if(req.body.name)user.name=req.body.name;
-            if(req.body.username)user.username=req.body.username;
-            if(req.body.password)user.password=req.body.password;
-
-            user.save(function(err){
-                if(err)res.send(err);
-
-                res.json({message:'User updated!'});
-            });
-        });
-});
+//     .put(function(req,res){
+//         User.findById(req.params.user_id,function(err,user){
+//             if(err)res.send(err);
+//             if(req.body.name)user.name=req.body.name;
+//             if(req.body.username)user.username=req.body.username;
+//             if(req.body.password)user.password=req.body.password;
+//
+//             user.save(function(err){
+//                 if(err)res.send(err);
+//
+//                 res.json({message:'User updated!'});
+//             });
+//         });
+// });
 
 //get the nickname
+//(single String) Nickname
 apiRouter.get('/me',function(req,res){
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
@@ -247,9 +250,8 @@ apiRouter.get('/me',function(req,res){
                     } else {
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
-                            var loginrequest = new sql.Requset();
-                            //TODO: change the PROCUDURE
-                            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+                            var loginrequest = new sql.Request();
+                            loginrequest.query('EXEC playerNickname'+'"'+email+'",',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
@@ -261,7 +263,7 @@ apiRouter.get('/me',function(req,res){
                                         success: true,
                                         code:0,
                                         message: 'Get your nickname',
-                                        nickname: recordset[0].nickname
+                                        nickname: recordset[0].NickName
                                     });
 
                                 }
@@ -285,7 +287,7 @@ apiRouter.get('/me',function(req,res){
 });
 
 //getMygame
-//Array: GName,Hours,Data
+//games:Array: GName,Hours,Data
 apiRouter.route('/me/games')
     //get information for the game
     .get(function(req,res){
@@ -310,9 +312,8 @@ apiRouter.route('/me/games')
                     } else {
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
-                            var loginrequest = new sql.Requset();
-                            //TODO: change the PROCUDURE
-                            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+                            var loginrequest = new sql.Request();
+                            loginrequest.query('EXEC playerGames'+'"'+email+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
@@ -345,6 +346,7 @@ apiRouter.route('/me/games')
     });
     })
     //change the game time
+    //TODO
     .put(function(req,res){
         var email=req.email;
         sql.connect(sqlconfig,function (err) {
@@ -367,7 +369,7 @@ apiRouter.route('/me/games')
                         } else {
                             var test = JSON.stringify(recordset[0]);
                             if (test.includes('1')) {
-                                var loginrequest = new sql.Requset();
+                                var loginrequest = new sql.Request();
                                 //TODO: change the PROCUDURE
                                 loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
                                     if (err){
@@ -404,6 +406,7 @@ apiRouter.route('/me/games')
     //buy new game
     .post(function(req,res){
         var email=req.email;
+        var gamename = req.body.gname;
         //TODO: Change the variable
         sql.connect(sqlconfig,function (err) {
             if(err) {
@@ -425,7 +428,7 @@ apiRouter.route('/me/games')
                         } else {
                             var test = JSON.stringify(recordset[0]);
                             if (test.includes('1')) {
-                                var loginrequest = new sql.Requset();
+                                var loginrequest = new sql.Request();
                                 //TODO: change the PROCUDURE
                                 loginrequest.query('EXEC playerLogin'+'"'+email+'",'+req.body.password,function(err,recordset){
                                     if (err){
@@ -460,10 +463,10 @@ apiRouter.route('/me/games')
         });
 
     });
-//get friends list
-//Array:friends
+
 apiRouter.route('/me/friends')
-    //get the friends
+//get friends list
+    //friends:Array:friends
     .get(function(req,res){
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
@@ -486,9 +489,8 @@ apiRouter.route('/me/friends')
                     } else {
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
-                            var loginrequest = new sql.Requset();
-                            //TODO: change the PROCUDURE
-                            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+                            var loginrequest = new sql.Request();
+                            loginrequest.query('EXEC playerFriends'+'"'+email+'",',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
@@ -500,7 +502,7 @@ apiRouter.route('/me/friends')
                                         success: true,
                                         code:0,
                                         message: 'Get your friends',
-                                        games: recordset
+                                        friends: recordset
                                     });
 
                                 }
@@ -543,9 +545,8 @@ apiRouter.route('/me/friends')
                         } else {
                             var test = JSON.stringify(recordset[0]);
                             if (test.includes('1')) {
-                                var loginrequest = new sql.Requset();
-                                //TODO: change the PROCUDURE
-                                loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+                                var loginrequest = new sql.Request();
+                                loginrequest.query('EXEC makeFriend'+'"'+req.body.email+'","'+email+'"',function(err,recordset){
                                     if (err){
                                         res.json({
                                             success: false,
@@ -556,8 +557,7 @@ apiRouter.route('/me/friends')
                                         res.json({
                                             success: true,
                                             code:0,
-                                            message: 'Get your friends',
-                                            games: recordset
+                                            message: 'Add friends',
                                         });
 
                                     }
@@ -578,7 +578,8 @@ apiRouter.route('/me/friends')
         });
     });
 
-//get all games
+//get all games information
+//games:Array: Name, GType,GPrice,UploadUser
 publicRouter.get('/games',function(req,res){
     sql.connect(sqlconfig,function (err) {
         if(err) {
@@ -589,9 +590,8 @@ publicRouter.get('/games',function(req,res){
                 message: 'Connect failed'
             });
         }else {
-            var loginrequest = new sql.Requset();
-            //TODO: change the PROCUDURE
-            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+            var loginrequest = new sql.Request();
+            loginrequest.query('EXEC publicGames',function(err,recordset){
                 if (err){
                     res.json({
                         success: false,
@@ -602,8 +602,8 @@ publicRouter.get('/games',function(req,res){
                     res.json({
                         success: true,
                         code:0,
-                        message: 'Get your nickname',
-                        nickname: recordset[0].nickname
+                        message: 'Get your games',
+                        games: recordset
                     });
 
                 }
@@ -612,6 +612,45 @@ publicRouter.get('/games',function(req,res){
         }
     });
 });
+
+//get game's info:
+//using route as param
+//games:Name, GType,GPrice,UploadUser
+publicRouter.get('/comments/:game_name',function(req,res){
+    sql.connect(sqlconfig,function (err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                success:false,
+                code: 1,
+                message: 'Connect failed'
+            });
+        }else {
+            var loginrequest = new sql.Request();
+            loginrequest.query('EXEC publicGames_game '+'"'+req.params.game_name+'"',function(err,recordset){
+                if (err){
+                    res.json({
+                        success: false,
+                        code:4,
+                        message:'SQL UNKNOWN error'
+
+                    });
+                }else{
+                    res.json({
+                        success: true,
+                        code:0,
+                        message: 'Get your game\'s comments',
+                        comments:recordset[0]
+                    });
+
+                }
+
+            });
+        }
+    });
+});
+//get all comments:
+//comments:Array:ID,Rate,Likes,GName
 publicRouter.get('/comments',function(req,res){
     sql.connect(sqlconfig,function (err) {
         if(err) {
@@ -622,21 +661,58 @@ publicRouter.get('/comments',function(req,res){
                 message: 'Connect failed'
             });
         }else {
-            var loginrequest = new sql.Requset();
-            //TODO: change the PROCUDURE
-            loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+            var loginrequest = new sql.Request();
+            loginrequest.query('EXEC publicComments',function(err,recordset){
                 if (err){
                     res.json({
                         success: false,
                         code:4,
                         message:'SQL UNKNOWN error'
+
                     });
                 }else{
                     res.json({
                         success: true,
                         code:0,
-                        message: 'Get your nickname',
-                        nickname: recordset[0].nickname
+                        message: 'Get your comments',
+                        comments:recordset
+                    });
+
+                }
+
+            });
+        }
+    });
+});
+
+//get game's comments:
+//using route as param
+//comments:Array:ID,Rate,Likes,GName
+publicRouter.get('/comments/:game_name',function(req,res){
+    sql.connect(sqlconfig,function (err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                success:false,
+                code: 1,
+                message: 'Connect failed'
+            });
+        }else {
+            var loginrequest = new sql.Request();
+            loginrequest.query('EXEC publicComments_game '+'"'+req.params.game_name+'"',function(err,recordset){
+                if (err){
+                    res.json({
+                        success: false,
+                        code:4,
+                        message:'SQL UNKNOWN error'
+
+                    });
+                }else{
+                    res.json({
+                        success: true,
+                        code:0,
+                        message: 'Get your game\'s comments',
+                        comments:recordset
                     });
 
                 }
