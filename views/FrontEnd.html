@@ -30,7 +30,6 @@ var app = angular.module('my-app',[]);
 app.controller('myCtrl',['$scope', '$http',function($scope,$http){
 	$scope.submitLogin = function(){
 		var data = $scope.fields;
-		$http.post('http://127.0.0.1:8080/api/authenticate',data);
 $http({
 method: 'POST',
 url: 'http://127.0.0.1:8080/api/authenticate',
