@@ -2,22 +2,48 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Untitled Document</title>
+<title>Login</title>
+<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 </head>
 
 <body>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
+<form id="Login" name = "LoginMsg" method = "POST" action = ./welcome.html ng-submit="submitLogin()" ng-app = "my-app" ng-controller = "myCtrl">
 <p>
   <label for="textfield">Login:</label>
-  <input type="text" name="textfield" id="textfield">
+  <input type="text" name="textfield" id="textfield" ng-model = "fields.Username">
 </p>
 <p>
   <label for="password">Password:</label>
-  <input type="password" name="password" id="password">
+  <input type="password" name="password" id="password" ng-model = "fields.Password">
 </p>
+
+{{fields}}
 <p>
-  <a href = ./welcome.html><input type="submit" name="submit" id="submit" value="Submit"></a>
+  <a href = ./welcome.html><input type="submit" name="submit" id="submit" value="Submit" onClick = "testJS()"></a>
 </p>
+</form>
+
+<script>
+var app = angular.module('my-app',[]);
+app.controller('myCtrl', function($scope){
+	$scope.submitLogin = function(){
+		var data = $scope.fields;
+		alert(data.Username);
+		$http.post('http://127.0.0.1:8080/api/authenticate',data);
+$http({
+method: 'POST',
+url: 'http://127.0.0.1:8080/api/authenticate',
+data: { email: 1, test: 2 },
+headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+})
+		console.log("test");
+	}
+	
+
+});
+
+</script>
 </body>
 </html>
