@@ -1,11 +1,12 @@
 #如果需要运行server, 需要在node_modules新建config.json  
 格式如下:  
 {	
-	"user":"用户名",
-	"password":"mssql的密码",
-	"server": "titan.csse.rose-hulman.edu",   
-	"database": "GamingGroup"
+	"user":"用户名",  
+	"password":"mssql的密码",  
+	"server": "titan.csse.rose-hulman.edu",     
+	"database": "GamingGroup"  
 }   
+  
 ---
 Node_model:  
   server side libraries  
