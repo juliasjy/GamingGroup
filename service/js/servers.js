@@ -66,7 +66,7 @@ apiRouter.post('/authenticate',function(req,res){
                                 }else{
                                     if (recordset[0].result==1){
                                         var token = jwt.sign({
-                                            email: req.body.email
+                                            email: req.body.Username
                                         }, superSecret, {expiresIn: '30m'});
                                         res.json({
                                             success: true,
@@ -491,7 +491,7 @@ apiRouter.route('/me/friends')
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            loginrequest.query('EXEC playerFriends'+'"'+email+'",',function(err,recordset){
+                            loginrequest.query('EXEC playerFriends'+'"'+email+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
