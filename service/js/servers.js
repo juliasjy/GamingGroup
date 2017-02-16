@@ -19,7 +19,7 @@ app.use(bodyParser.json());
 app.use(function(req,res,next){
     res.setHeader('Access-Control-Allow-Origin','*');
     res.setHeader('Access-Control-Allow-Methods','GET, POST');
-    res.setHeader('Access0Control-Allow-Headers','X_Requested-With,content-type ,\
+    res.setHeader('Access-Control-Allow-Headers','X_Requested-With,content-type ,\
     Authorization');
 		console.log('app.use: ');
     console.log(req.body);
@@ -145,7 +145,7 @@ apiRouter.post('/authenticate',function(req,res){
 
 apiRouter.use(function(req,res,next){
     console.log('Somebody just came to our app!....use in apiRouter');
-
+    console.log(req.headers);
     var token = req.body.token  || req.query.token|| req.headers['x-access-token'];
 
     if (token){
@@ -163,6 +163,7 @@ apiRouter.use(function(req,res,next){
             }
         });
     }else{
+
         return res.status(403).send({
             success:false,
             message:'No token provided.'
@@ -177,7 +178,7 @@ apiRouter.get('/',function(req,res){
 
 //get the nickname
 //(single String) NickName
-apiRouter.get('/me',function(req,res){
+apiRouter.post('/me',function(req,res){
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
         if(err) {
@@ -410,10 +411,9 @@ apiRouter.route('/me/games')
 
     });
 
-apiRouter.route('/me/friends')
+apiRouter.post('/me/getfriends',function(req,res){
 //get friends list
-//friends:Array:friendEmail,NickName
-    .get(function(req,res){
+//friends:Array:friendEmail,NickName{
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
         if(err) {
@@ -469,7 +469,7 @@ apiRouter.route('/me/friends')
     });
     })
     //add new friend
-    .post(function(req,res){
+apiRouter.post('/me/addfriends',function(req,res){
         var email=req.email;
         sql.connect(sqlconfig,function (err) {
             if(err) {
@@ -503,7 +503,7 @@ apiRouter.route('/me/friends')
                                         res.json({
                                             success: true,
                                             code:0,
-                                            message: 'Add friends',
+                                            message: 'Add friends'
                                         });
 
                                     }
