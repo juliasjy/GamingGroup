@@ -25,7 +25,7 @@
     <p class="user-name">Username</p>
     <h1 class="title">Your Friends</h1>
 	<div ng-app='get_me' ng-controller = 'me_control'>
-    <h2 class="display-name", ng-model="my_name">Your Name on here</h2>
+    <h2 class="display-name", ng-model="my_name">{{my_name}}</h2>
 	</div>
 	<style>
 	.wrapper {
@@ -42,12 +42,12 @@
 		<input type="text" />
 		<button> Search</button>
 	</form>
-	<br>Add Friends
+	<br>Add    Friends &nbsp &nbsp  
 	<form class="wrapper">
 		<input type="text" />
 		<button> Add</button>
 	</form>
-    <div ng-app = 'get_friends' ng-controller = 'get_control' ng-click='getFriends()'><button> Get Friends </button>
+    <div id="get_friends" ng-app = 'get_friends' ng-controller = 'get_control' ng-click='getFriends()'><button> Get Friends </button>
 	<div class="firend-table-container" style="padding-left: 20em">
 	
 
@@ -72,6 +72,7 @@
  
 	<script>
 var app = angular.module('get_friends', []);
+console.log("123456");
 app.controller('get_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
 
 			$scope.getFriends = function () {
@@ -100,14 +101,18 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 
 		}
 	]);
- </script>
-<script>
-var app = angular.module('get_me', []);
-app.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+	
+	
+	
+	
+	angular.bootstrap(document.getElementById("get_friends"), ['get_friends']);
+	
+	
+	var app2 = angular.module('get_me', []);
+app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
 
-				console.log("123");
 				var token = $window.localStorage.getItem('token');
-				console.log(token);
+				
 				$http({
 method: 'POST',
 url: 'http://localhost:8080/api/me',
@@ -122,13 +127,16 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function successCallback(response){
 	console.log(response);
 	if (response.data.code == 0){
-		$scope.my_name = response.data.NickName;
+		$scope.my_name = response.data.nickname;
 	}
 });
  
 		}
 	]);
-</script>
+	
+	
+ </script>
+
 
 </body>
 
