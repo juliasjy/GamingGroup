@@ -13,54 +13,40 @@
 	<title>Your Games</title>
 </head>
 <body>
-	<div class="links"><a href="welcome.html">Homepage!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friendlist.html">FriendsList!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="games.html">Games!</a><div class="user"><div ng-app='get_me' ng-controller = 'me_control'>
+	<div class="links"><a href="welcome.html">Homepage!</a>
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friendlist.html">FriendsList!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="games.html">Games!</a>
+	<div class="user"><div id='get_me' ng-app='get_me' ng-controller = 'me_control'>
     <h2 class="display-name", ng-model="my_name">Welcome!&nbsp&nbsp {{my_name}}</h2>
 	</div></div>
 	</div>
 	<hr>
 
 
-	<div class="game-table-container">
+	<div class="game-table-container" ng-app = 'buy-game' ng-controller = 'buy-control'>
 		<h1 class="title">Games</h1>
 			<div class="search">
-		<input class="search-input" placeholder="What game do you want?"/>
-		<button class="search-button" type="submit">Search</button>
+		<input class="buy-input" placeholder="What game do you want?" ng-model="game"/>
+		<button class="buy-button" type="submit" ng-onclick="buy_games()">Buy</button>
 	</div>
-
+	
+		<div id='get_games' ng-app ='get-games' ng-controller='get-control' >
 		<table class="table table-hover">
-			<tr id="get-hearthstone-detail">
-				<td>
-					<img src="../public/images/hearthstone.jpg" alt="HTML5 Icon" width="384" height="216">
-				</td>
-				<td>
-					<p class="description">Hearthstone...</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<img src="../public/images/overwatch.jpg" alt="HTML5 Icon" width="384" height="216">
-				</td>
-				<td>
-					<p class="description">Overwatch...</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<img src="../public/images/leaguelegends.png" alt="HTML5 Icon" width="384" height="216">
-				</td>
-				<td>
-					<p class="description">Lol...</p>
-				</td>
-			</tr>
+			<tbody ng:repeat="x in games">
+    <tr><td>{{x.GName}}</td></tr>
+    
+  </tbody>
+		 
+			
 		</table>
 	</div>
 	<button class="recommand-button" type="submit">Recommand games</button>
 <script>
-	var app2 = angular.module('get_me', []);
+
+		var app2 = angular.module('get_me', []);
 app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
-				console.log("test");
+				
 				var token = $window.localStorage.getItem('token');
-				console.log(token);
+				
 				
 				$http({
 method: 'POST',
@@ -74,7 +60,7 @@ transformRequest: function(obj) {
 data: {"token":token},
 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function successCallback(response){
-	console.log(response);
+	
 	if (response.data.code == 0){
 		$scope.my_name = response.data.nickname;
 	}
@@ -82,6 +68,39 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
  
 		}
 	]);
+	
+		
+		
+	var app = angular.module('get-games', []);
+
+app.controller('get-control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+
+			
+				var token = $window.localStorage.getItem('token');
+				
+				$http({
+method: 'POST',
+url: 'http://localhost:8080/api/me/getgames',
+transformRequest: function(obj) {
+        var str = [];
+        for(var p in obj)
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        return str.join("&");
+    },
+data: {"token":token},
+headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+}).then(function successCallback(response){
+	console.log(response);
+	if (response.data.code == 0){
+	
+		$scope.games = response.data.games;
+	}
+});
+			
+
+		}
+	]);
+angular.bootstrap(document.getElementById("get_games"), ['get-games']);
 	
 	</script>
 </body>
