@@ -63,6 +63,9 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		$window.localStorage.setItem('token', response.data.token);
 		console.log($window.localStorage.getItem('token'));
 	}
+	else{
+		alert(response.data.message);
+		}
 });	
 	}
 }]);
