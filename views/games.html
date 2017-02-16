@@ -2,23 +2,31 @@
 <html>
 <head>
 	<!--local-->
-	<link rel="stylesheet" href="../public/styles/games.css"></link>
+	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 	<script type="text/javascript" src="../public/js/games.js"></script>
 	<!-- bootstrap-->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+		<link rel="stylesheet" href="../public/styles/games.css"></link>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
 	<!--title-->
 	<title>Your Games</title>
 </head>
 <body>
-	<div class="search">
+	<div class="links"><a href="welcome.html">Homepage!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friendlist.html">FriendsList!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="games.html">Games!</a><div class="user"><div ng-app='get_me' ng-controller = 'me_control'>
+    <h2 class="display-name", ng-model="my_name">Welcome!&nbsp&nbsp {{my_name}}</h2>
+	</div></div>
+	</div>
+	<hr>
+
+
+	<div class="game-table-container">
+		<h1 class="title">Games</h1>
+			<div class="search">
 		<input class="search-input" placeholder="What game do you want?"/>
 		<button class="search-button" type="submit">Search</button>
-		<p class="user-name">User name</p>
 	</div>
-	<h1 class="title">Games</h1>
-	<div class="game-table-container" style="padding-top: 2em">
+
 		<table class="table table-hover">
 			<tr id="get-hearthstone-detail">
 				<td>
@@ -47,6 +55,34 @@
 		</table>
 	</div>
 	<button class="recommand-button" type="submit">Recommand games</button>
-
+<script>
+	var app2 = angular.module('get_me', []);
+app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+				console.log("test");
+				var token = $window.localStorage.getItem('token');
+				console.log(token);
+				
+				$http({
+method: 'POST',
+url: 'http://localhost:8080/api/me',
+transformRequest: function(obj) {
+        var str = [];
+        for(var p in obj)
+        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+        return str.join("&");
+    },
+data: {"token":token},
+headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+}).then(function successCallback(response){
+	console.log(response);
+	if (response.data.code == 0){
+		$scope.my_name = response.data.nickname;
+	}
+});
+ 
+		}
+	]);
+	
+	</script>
 </body>
 </html>

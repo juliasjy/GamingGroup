@@ -500,12 +500,19 @@ apiRouter.post('/me/addfriends',function(req,res){
                                             message:'SQL UNKNOWN error'
                                         });
                                     }else{
+                                        if (recordset.result==0){
                                         res.json({
                                             success: true,
                                             code:0,
                                             message: 'Add friends'
-                                        });
-
+                                        });}
+                                        else{
+                                            res.json({
+                                                success: false,
+                                                code:5,
+                                                message:'The user want to add doesn\'t exists'
+                                            });
+                                        }
                                     }
 
                                 });
