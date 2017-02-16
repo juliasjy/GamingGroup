@@ -238,9 +238,8 @@ apiRouter.post('/me',function(req,res){
 
 //getMygame
 //games:Array: GName,Hours,Data
-apiRouter.route('/me/games')
-    //get information for the game
-    .get(function(req,res){
+//get information for the game
+apiRouter.get('/me/getgames',function(req,res){
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
         if(err) {
@@ -294,10 +293,10 @@ apiRouter.route('/me/games')
             )
         }
     });
-    })
+    });
     //change the game time
     //TODO
-    .put(function(req,res){
+apiRouter.post('/me/buygames',function(req,res){
         var email=req.email;
         sql.connect(sqlconfig,function (err) {
             if(err) {
@@ -352,9 +351,9 @@ apiRouter.route('/me/games')
                 )
             }
         });
-    })
+    });
     //buy new game
-    .post(function(req,res){
+apiRouter.post('/me/buygames',function(req,res){
         var email=req.email;
         var gamename = req.body.gname;
         sql.connect(sqlconfig,function (err) {
