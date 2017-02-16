@@ -1,20 +1,14 @@
+body{
+	padding:20px;
+	padding-left:50px; 
+	padding-right:50px; 
+}
 .user-name{
 	display:inline-block;
 	float:right;
 }
 .search{
-
 	width:100%;
-}
-.display-name{
-  fnot-family:fantasy;
-  color:#003399;
-  margin-bottom: 2px;
-}
-.title{
-	font-family:fantasy;
-	color:#800000;
-	margin-bottom:0px;
 }
 .search-input{
 	width:70%;
@@ -24,7 +18,30 @@
 	width:10%;
 }
 .firend-table-container{
-	padding-top:20px;
 	padding-left:80px; 
-	padding-right:500px; 
+	padding-right:80px; 
 }
+.title{
+	font-family:fantasy;
+	color:#4B38A8;
+	margin-bottom:0px;
+}
+.links{
+	font-family:fantasy;
+	font-size:150%;
+}
+.wrapper {
+    border:1px solid #000;
+    display:inline-block;
+}
+.user{
+	float:right;
+	font-family:fantasy;
+	font-size:130%;
+	padding-right:100px;
+}	
+input,
+button{
+    background-color:transparent;
+    border:3;
+	}
