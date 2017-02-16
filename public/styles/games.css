@@ -1,31 +1,41 @@
 body{
 	padding:20px;
+	padding-left:50px; 
+	padding-right:50px; 
 }
 .search{
 	width:100%;
 }
-
+.title{
+	font-family:fantasy;
+	color:#4B38A8;
+	margin-bottom:0px;
+}
 .search-input{
 	width:70%;
 }
 
 .search-button{
+		float:right;
 	margin-left:20px;
 	width:10%;
-}
-
-.user-name{
-	display:inline-block;
-	float:right;
-}
-
-.title{
-	font-family:fantasy;
-	color:#800000;
-	margin-bottom:0px;
 }
 
 .recommand-button{
 	margin:auto;
 	display: block;
+}
+.links{
+	font-family:fantasy;
+	font-size:150%;
+}
+.user{
+	float:right;
+	font-family:fantasy;
+	font-size:130%;
+	padding-right:100px;
+}	
+.game-table-container{
+	padding-left:80px; 
+	padding-right:80px; 
 }

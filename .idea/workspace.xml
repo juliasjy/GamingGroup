@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c5297e6a-38cf-4161-bd2d-708f7ddb0ade" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/service/js/servers.js" afterPath="$PROJECT_DIR$/service/js/servers.js" />
-    </list>
+    <list default="true" id="c5297e6a-38cf-4161-bd2d-708f7ddb0ade" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
     <ignored path="$PROJECT_DIR$/tmp/" />
@@ -24,8 +21,8 @@
       <file leaf-file-name="servers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/js/servers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="203" column="82" lean-forward="false" selection-start-line="203" selection-start-column="82" selection-end-line="203" selection-end-column="82" />
+            <state relative-caret-position="710">
+              <caret line="215" column="71" lean-forward="true" selection-start-line="215" selection-start-column="71" selection-end-line="215" selection-end-column="71" />
               <folding />
             </state>
           </provider>
@@ -254,12 +251,12 @@
       <workItem from="1487092364741" duration="7708000" />
       <workItem from="1487141436506" duration="726000" />
       <workItem from="1487206754733" duration="4892000" />
-      <workItem from="1487224861917" duration="7521000" />
+      <workItem from="1487224861917" duration="7783000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="33041000" />
+    <option name="totallyTimeSpent" value="33303000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -352,8 +349,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/js/servers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="203" column="82" lean-forward="false" selection-start-line="203" selection-start-column="82" selection-end-line="203" selection-end-column="82" />
+        <state relative-caret-position="710">
+          <caret line="215" column="71" lean-forward="true" selection-start-line="215" selection-start-column="71" selection-end-line="215" selection-end-column="71" />
           <folding />
         </state>
       </provider>
