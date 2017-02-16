@@ -35,7 +35,7 @@ app.get('/',function(req,res){
 
 //token
 apiRouter.post('/authenticate',function(req,res){
-    console.log(req.body.username);
+    console.log(req.body.Username);
     sql.connect(sqlconfig,function (err) {
         if(err) {
             console.log(err);
