@@ -70,7 +70,7 @@ apiRouter.post('/authenticate',function(req,res){
                                     if (recordset[0].result==1){
                                         var token = jwt.sign({
                                             email: req.body.Username
-                                        }, superSecret, {expiresIn: '30m'});
+                                        }, superSecret, {expiresIn: '1d'});
                                         res.json({
                                             success: true,
                                             code:0,
@@ -201,7 +201,7 @@ apiRouter.post('/me',function(req,res){
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            loginrequest.query('EXEC playerNickname '+'"'+email+'",',function(err,recordset){
+                            loginrequest.query('EXEC playerNickname '+'"'+email+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
