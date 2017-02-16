@@ -60,7 +60,8 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function successCallback(response){
 	if (response.data.code == 0){
 		$window.location.href='welcome.html';
-		myService.set(response.data.token);		
+		$window.localStorage.setItem('token', response.data.token);
+		console.log($window.localStorage.getItem('token'));
 	}
 });	
 	}
