@@ -21,6 +21,7 @@ app.use(function(req,res,next){
     res.setHeader('Access-Control-Allow-Methods','GET, POST');
     res.setHeader('Access0Control-Allow-Headers','X_Requested-With,content-type ,\
     Authorization');
+		console.log('app.use: ');
     console.log(req.body);
     next();
 });
@@ -34,7 +35,7 @@ app.get('/',function(req,res){
 
 //token
 apiRouter.post('/authenticate',function(req,res){
-    console.log(req.body.Username);
+    console.log(req.body.username);
     sql.connect(sqlconfig,function (err) {
         if(err) {
             console.log(err);
@@ -47,6 +48,7 @@ apiRouter.post('/authenticate',function(req,res){
             var request = new sql.Request();
             request.query('EXEC ifPlayerExist' + ' "' + req.body.Username + '"', function (err, recordset) {
                     if (err) {
+												console.log(err);
                         res.json({
                             success: false,
                             code:2,
@@ -56,7 +58,8 @@ apiRouter.post('/authenticate',function(req,res){
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            loginrequest.query('EXEC playerLogin'+'"'+req.body.Username+'","'+req.body.Password+'"',function(err,recordset){
+														console.log('EXEC playerLogin '+'"'+req.body.Username+'","'+req.body.Password+'"');
+                            loginrequest.query('EXEC playerLogin '+'"'+req.body.Username+'","'+req.body.Password+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
