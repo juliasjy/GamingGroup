@@ -239,7 +239,7 @@ apiRouter.post('/me',function(req,res){
 //getMygame
 //games:Array: GName,Hours,Data
 //get information for the game
-apiRouter.get('/me/getgames',function(req,res){
+apiRouter.post('/me/getgames',function(req,res){
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
         if(err) {
