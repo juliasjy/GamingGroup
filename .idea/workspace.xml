@@ -24,11 +24,9 @@
       <file leaf-file-name="servers.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/service/js/servers.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="267">
-              <caret line="443" column="67" lean-forward="true" selection-start-line="443" selection-start-column="67" selection-end-line="443" selection-end-column="67" />
-              <folding>
-                <element signature="e#1095#4007#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="242">
+              <caret line="203" column="82" lean-forward="false" selection-start-line="203" selection-start-column="82" selection-end-line="203" selection-end-column="82" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -256,12 +254,12 @@
       <workItem from="1487092364741" duration="7708000" />
       <workItem from="1487141436506" duration="726000" />
       <workItem from="1487206754733" duration="4892000" />
-      <workItem from="1487224861917" duration="4671000" />
+      <workItem from="1487224861917" duration="7521000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30191000" />
+    <option name="totallyTimeSpent" value="33041000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -301,9 +299,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1095#4007#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -319,9 +315,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1095#4007#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -337,9 +331,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#1095#4007#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -360,11 +352,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/service/js/servers.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="267">
-          <caret line="443" column="67" lean-forward="true" selection-start-line="443" selection-start-column="67" selection-end-line="443" selection-end-column="67" />
-          <folding>
-            <element signature="e#1095#4007#0" expanded="false" />
-          </folding>
+        <state relative-caret-position="242">
+          <caret line="203" column="82" lean-forward="false" selection-start-line="203" selection-start-column="82" selection-end-line="203" selection-end-column="82" />
+          <folding />
         </state>
       </provider>
     </entry>
