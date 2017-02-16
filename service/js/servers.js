@@ -231,7 +231,7 @@ apiRouter.get('/',function(req,res){
 // });
 
 //get the nickname
-//(single String) Nickname
+//(single String) NickName
 apiRouter.get('/me',function(req,res){
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
@@ -244,7 +244,7 @@ apiRouter.get('/me',function(req,res){
             });
         }else {
             var request = new sql.Request();
-            request.query('EXEC ifPlayerExist' + ' "' + email + '"', function (err, recordset) {
+            request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
                     if (err) {
                         res.json({
                             success: false,
@@ -255,7 +255,7 @@ apiRouter.get('/me',function(req,res){
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            loginrequest.query('EXEC playerNickname'+'"'+email+'",',function(err,recordset){
+                            loginrequest.query('EXEC playerNickname '+'"'+email+'",',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
@@ -306,7 +306,7 @@ apiRouter.route('/me/games')
             });
         }else {
             var request = new sql.Request();
-            request.query('EXEC ifPlayerExist' + ' "' + email + '"', function (err, recordset) {
+            request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
                     if (err) {
                         res.json({
                             success: false,
@@ -317,7 +317,7 @@ apiRouter.route('/me/games')
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            loginrequest.query('EXEC playerGames'+'"'+email+'"',function(err,recordset){
+                            loginrequest.query('EXEC playerGames '+'"'+email+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
@@ -363,7 +363,7 @@ apiRouter.route('/me/games')
                 });
             }else {
                 var request = new sql.Request();
-                request.query('EXEC ifPlayerExist' + ' "' + email + '"', function (err, recordset) {
+                request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
                         if (err) {
                             res.json({
                                 success: false,
@@ -375,7 +375,7 @@ apiRouter.route('/me/games')
                             if (test.includes('1')) {
                                 var loginrequest = new sql.Request();
                                 //TODO: change the PROCUDURE
-                                loginrequest.query('EXEC playerLogin'+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
+                                loginrequest.query('EXEC playerLogin '+'"'+req.body.email+'",'+req.body.password,function(err,recordset){
                                     if (err){
                                         res.json({
                                             success: false,
@@ -411,7 +411,6 @@ apiRouter.route('/me/games')
     .post(function(req,res){
         var email=req.email;
         var gamename = req.body.gname;
-        //TODO: Change the variable
         sql.connect(sqlconfig,function (err) {
             if(err) {
                 console.log(err);
@@ -422,7 +421,7 @@ apiRouter.route('/me/games')
                 });
             }else {
                 var request = new sql.Request();
-                request.query('EXEC ifPlayerExist' + ' "' + email + '"', function (err, recordset) {
+                request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
                         if (err) {
                             res.json({
                                 success: false,
@@ -433,8 +432,7 @@ apiRouter.route('/me/games')
                             var test = JSON.stringify(recordset[0]);
                             if (test.includes('1')) {
                                 var loginrequest = new sql.Request();
-                                //TODO: change the PROCUDURE
-                                loginrequest.query('EXEC playerLogin'+'"'+email+'",'+req.body.password,function(err,recordset){
+                                loginrequest.query('EXEC buyGame '+'"'+email+'", "'+gamename+'"',function(err,recordset){
                                     if (err){
                                         res.json({
                                             success: false,
@@ -445,8 +443,7 @@ apiRouter.route('/me/games')
                                         res.json({
                                             success: true,
                                             code:0,
-                                            message: 'Get your games',
-                                            games: recordset
+                                            message: 'Get your games'
                                         });
 
                                     }
@@ -470,7 +467,7 @@ apiRouter.route('/me/games')
 
 apiRouter.route('/me/friends')
 //get friends list
-    //friends:Array:friends
+//friends:Array:friendEmail,NickName
     .get(function(req,res){
     var email=req.email;
     sql.connect(sqlconfig,function (err) {
@@ -483,7 +480,7 @@ apiRouter.route('/me/friends')
             });
         }else {
             var request = new sql.Request();
-            request.query('EXEC ifPlayerExist' + ' "' + email + '"', function (err, recordset) {
+            request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
                     if (err) {
                         res.json({
                             success: false,
@@ -494,7 +491,7 @@ apiRouter.route('/me/friends')
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            loginrequest.query('EXEC playerFriends'+'"'+email+'"',function(err,recordset){
+                            loginrequest.query('EXEC playerFriends '+'"'+email+'"',function(err,recordset){
                                 if (err){
                                     res.json({
                                         success: false,
@@ -539,7 +536,7 @@ apiRouter.route('/me/friends')
                 });
             }else {
                 var request = new sql.Request();
-                request.query('EXEC ifPlayerExist' + ' "' + email + '"', function (err, recordset) {
+                request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
                         if (err) {
                             res.json({
                                 success: false,
@@ -550,7 +547,7 @@ apiRouter.route('/me/friends')
                             var test = JSON.stringify(recordset[0]);
                             if (test.includes('1')) {
                                 var loginrequest = new sql.Request();
-                                loginrequest.query('EXEC makeFriend'+'"'+req.body.email+'","'+email+'"',function(err,recordset){
+                                loginrequest.query('EXEC makeFriend '+'"'+req.body.email+'","'+email+'"',function(err,recordset){
                                     if (err){
                                         res.json({
                                             success: false,
@@ -726,6 +723,41 @@ publicRouter.get('/comments/:game_name',function(req,res){
     });
 });
 
+//get all fight record
+//fights:Array:FighterName,FighteeName,Date,Result
+publicRouter.get('/community_fight',function(req,res){
+    sql.connect(sqlconfig,function (err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                success:false,
+                code: 1,
+                message: 'Connect failed'
+            });
+        }else {
+            var loginrequest = new sql.Request();
+            loginrequest.query('EXEC publicFight',function(err,recordset){
+                if (err){
+                    res.json({
+                        success: false,
+                        code:4,
+                        message:'SQL UNKNOWN error'
+
+                    });
+                }else{
+                    res.json({
+                        success: true,
+                        code:0,
+                        message: 'Get your game\'s comments',
+                        fights:recordset
+                    });
+
+                }
+
+            });
+        }
+    });
+});
 
 app.use('/api',apiRouter);
 app.use('/info',publicRouter);
