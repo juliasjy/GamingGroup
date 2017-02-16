@@ -22,21 +22,15 @@
         <button class="search-button" type="submit">Search</button>
         <p class="user-name">Username</p>
     </div> -->
-    <p class="user-name">Username</p>
-    <h1 class="title">Your Friends</h1>
-	<div ng-app='get_me' ng-controller = 'me_control'>
-    <h2 class="display-name", ng-model="my_name">{{my_name}}</h2>
+			<div class="links"><a href="welcome.html">Homepage!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friendlist.html">FriendsList!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="games.html">Games!</a><div class="user"><div ng-app='get_me' ng-controller = 'me_control'>
+    <h2 class="display-name", ng-model="my_name">Welcome!&nbsp&nbsp {{my_name}}</h2>
+	</div></div>
 	</div>
+			<hr>
+    <h1 class="title">Your Friends</h1>
+
 	<style>
-	.wrapper {
-    border:1px solid #000;
-    display:inline-block;
-	}
-	input,
-	button {
-    background-color:transparent;
-    border:3;
-	}
+
 	</style>
 	<div id = "add_friends" ng-app = 'add_friends' ng-controller = 'add_control'>
 	<br>Add    Friends &nbsp &nbsp  
@@ -46,8 +40,8 @@
 	</form>
 	</div>
 	
-    <div id="get_friends" ng-app = 'get_friends' ng-controller = 'get_control' ng-click='getFriends()'><button> Get Friends </button>
-	<div class="firend-table-container" style="padding-left: 20em">
+    <div id="get_friends" ng-app = 'get_friends' ng-controller = 'get_control' ng-click='getFriends()'><button> Refresh Friends </button>
+	<div class="firend-table-container" >
 	
 
 	 <table class="table table-hover">
@@ -62,7 +56,9 @@
                 </tr>
             </thead>
   <tbody ng:repeat="x in names">
-    <tr><td>{{x.friendEmail}}</td><td>{{x.NickName}}</td></tr>
+    <tr><td>
+					<img src={{x.src}} alt="HTML5 Icon" width="184" height="184">
+				</td><td>{{x.friendEmail}}</td><td>{{x.NickName}}</td></tr>
     
   </tbody>
 </table>
@@ -91,6 +87,10 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function successCallback(response){
 	
 	if (response.data.code == 0){
+		for(var i=0;i<response.data.friends.length;i++){
+			response.data.friends[i].src="../public/images/icon/"+response.data.friends[i].friendEmail+".jpg";
+			console.log(response.data.friends[i].src);
+		}
 		$scope.names = response.data.friends;
 	}
 });
