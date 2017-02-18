@@ -21,10 +21,10 @@
 	<hr>
 
 
-	<div class="game-table-container" ng-app = 'buy_game' ng-controller = 'buy_control'>
+	<div class="game-table-container" id='buy_games' ng-app = 'buy_game' ng-controller = 'buy_control'>
 		<h1 class="title">Games</h1>
 			<form>
-		<input type="text" id='buy_games'  ng-model="game" />{{game}}
+		<input type="text"   ng-model="fields.game" />{{fields.game}}
 		<button class="buy-button" ng-click="buy_games()">Buy</button>
 		
 		</form>
@@ -46,7 +46,9 @@
 	</div>
 	<button class="recommand-button" type="submit">Recommend games</button>
 <script>
+
 var app2 = angular.module('get_me', []);
+
 app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
 				
 				
@@ -130,7 +132,7 @@ transformRequest: function(obj) {
 data: {"token":token,"gname":data},
 headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function successCallback(response){
-	
+	console.log(response);
 	if (response.data.code == 0){
 		alert("1");
 	}
