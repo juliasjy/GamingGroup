@@ -66,15 +66,9 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 	
 	if (response.data.code == 0){
 		$scope.my_name = response.data.nickname;
-	}
-});
- 
-		}
-	]);
-	
 		
 		
-	var app = angular.module('get-games', []);
+		var app = angular.module('get-games', []);
 
 app.controller('get-control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
 
@@ -107,6 +101,17 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 		}
 	]);
 angular.bootstrap(document.getElementById("get_games"), ['get-games']);
+		
+		
+	}
+});
+ 
+		}
+	]);
+	
+		
+		
+	
 	
 	</script>
 </body>
