@@ -379,6 +379,7 @@ apiRouter.post('/me/buygames',function(req,res){
                                 var loginrequest = new sql.Request();
                                 loginrequest.query('EXEC buyGame '+'"'+email+'", "'+gamename+'"',function(err,recordset){
                                     if (err){
+                                        console.log(err);
                                         res.json({
                                             success: false,
                                             code:4,
@@ -493,13 +494,14 @@ apiRouter.post('/me/addfriends',function(req,res){
                                 var loginrequest = new sql.Request();
                                 loginrequest.query('EXEC makeFriend '+'"'+req.body.email+'","'+email+'"',function(err,recordset){
                                     if (err){
+                                        console.log(err);
                                         res.json({
                                             success: false,
                                             code:4,
                                             message:'SQL UNKNOWN error'
                                         });
                                     }else{
-                                        if (recordset.result==0){
+                                        if (recordset[0].result==0){
                                         res.json({
                                             success: true,
                                             code:0,
@@ -529,6 +531,216 @@ apiRouter.post('/me/addfriends',function(req,res){
             }
         });
     });
+
+//get play's communities
+//communities:Array:PEmail,CName,status
+apiRouter.post('/me/getcommunities',function(req,res){
+    var email=req.email;
+    sql.connect(sqlconfig,function (err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                success:false,
+                code: 1,
+                message: 'Connect failed'
+            });
+        }else {
+            var request = new sql.Request();
+            request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            code:2,
+                            message: 'Request to SQL failed'
+                        });
+                    } else {
+                        var test = JSON.stringify(recordset[0]);
+                        if (test.includes('1')) {
+                            var loginrequest = new sql.Request();
+                            loginrequest.query('EXEC myCommunity '+'"'+email+'"',function(err,recordset){
+                                if (err){
+                                    res.json({
+                                        success: false,
+                                        code:4,
+                                        message:'SQL UNKNOWN error'
+                                    });
+                                }else{
+
+                                        res.json({
+                                            success: true,
+                                            code:0,
+                                            message: 'Add friends',
+                                            communities:recordset
+                                        });
+
+                                }
+
+                            });
+                        }else{
+                            res.json({
+                                success: false,
+                                code:3,
+                                message: 'User doesnot exist'
+                            });
+                        }
+                    }
+                }
+
+            )
+        }
+    });
+});
+
+apiRouter.post('/me/joincommunity',function(req,res){
+    var email=req.email;
+    sql.connect(sqlconfig,function (err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                success:false,
+                code: 1,
+                message: 'Connect failed'
+            });
+        }else {
+            var request = new sql.Request();
+            request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            code:2,
+                            message: 'Request to SQL failed'
+                        });
+                    } else {
+                        var test = JSON.stringify(recordset[0]);
+                        if (test.includes('1')) {
+                            var loginrequest = new sql.Request();
+                            loginrequest.query('EXEC joinCommunity '+'"'+email+'","'+req.body.cname+'"',function(err,recordset){
+                                if (err){
+                                    console.log(err);
+                                    res.json({
+                                        success: false,
+                                        code:4,
+                                        message:'SQL UNKNOWN error'
+                                    });
+                                }else{
+                                    if (recordset[0].result==0){
+                                        res.json({
+                                            success: true,
+                                            code:0,
+                                            message: 'join successfully'
+                                        });}
+                                    else{
+                                        if (recordset[0].result==1) {
+                                            res.json({
+                                                success: false,
+                                                code: 5,
+                                                message: 'The community doesn\'t exists'
+                                            });
+                                        }else{
+                                            res.json({
+                                                success: false,
+                                                code: 5,
+                                                message: 'User has already in that community'
+                                            });
+                                        }
+                                    }
+                                }
+
+                            });
+                        }else{
+                            res.json({
+                                success: false,
+                                code:3,
+                                message: 'User doesnot exist'
+                            });
+                        }
+                    }
+                }
+
+            )
+        }
+    });
+});
+
+apiRouter.post('/me/createcommunity',function(req,res){
+    var email=req.email;
+    sql.connect(sqlconfig,function (err) {
+        if(err) {
+            console.log(err);
+            res.json({
+                success:false,
+                code: 1,
+                message: 'Connect failed'
+            });
+        }else {
+            var request = new sql.Request();
+            request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
+                    if (err) {
+                        res.json({
+                            success: false,
+                            code:2,
+                            message: 'Request to SQL failed'
+                        });
+                    } else {
+                        var test = JSON.stringify(recordset[0]);
+                        if (test.includes('1')) {
+                            var loginrequest = new sql.Request();
+                            loginrequest.query('EXEC createCommunity '+'"'+email+'","'+req.body.cname+'","'+req.body.theme+'"',function(err,recordset){
+                                if (err){
+                                    console.log(err);
+                                    res.json({
+                                        success: false,
+                                        code:4,
+                                        message:'SQL UNKNOWN error'
+                                    });
+                                }else{
+                                    if (recordset[0].result==0){
+                                        res.json({
+                                            success: true,
+                                            code:0,
+                                            message: 'join successfully'
+                                        });}
+                                    else{
+                                        if (recordset[0].result==1) {
+                                            res.json({
+                                                success: false,
+                                                code: 5,
+                                                message: 'The community exists'
+                                            });
+                                        }else{
+                                            if (recordset[0].result==2) {
+                                            res.json({
+                                                success: false,
+                                                code: 5,
+                                                message: 'User has already in that community'
+                                            });}
+                                            else{
+                                                res.json({
+                                                    success: false,
+                                                    code: 5,
+                                                    message: 'theme doesn\'t exist'
+                                                });
+                                            }
+                                        }
+                                    }
+                                }
+
+                            });
+                        }else{
+                            res.json({
+                                success: false,
+                                code:3,
+                                message: 'User doesnot exist'
+                            });
+                        }
+                    }
+                }
+
+            )
+        }
+    });
+});
+
 
 //get all games information
 //games:Array: Name, GType,GPrice,UploadUser
