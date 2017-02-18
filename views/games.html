@@ -30,6 +30,7 @@
 	</div>
 	
 		<div id='get_games' ng-app ='get-games' ng-controller='get-control' >
+		
 		<table class="table table-hover">
 			<tbody ng:repeat="x in games">
     <tr><td>
@@ -41,7 +42,7 @@
 			
 		</table>
 	</div>
-	<button class="recommand-button" type="submit">Recommand games</button>
+	<button class="recommand-button" type="submit">Recomme<>nd games</button>
 <script>
 
 		var app2 = angular.module('get_me', []);
@@ -94,9 +95,9 @@ headers: {'Content-Type': 'application/x-www-form-urlencoded'}
 }).then(function successCallback(response){
 	console.log(response);
 	if (response.data.code == 0){
-	for(var i=0;i<response.data.friends.length;i++){
-			response.data.friends[i].src="../public/images/games/"+response.data.friends[i].friendEmail+".jpg";
-			console.log(response.data.friends[i].src);
+	for(var i=0;i<response.data.games.length;i++){
+			response.data.games[i].src="../public/images/games/"+response.data.games[i].GName+".jpg";
+			console.log(response.data.games[i].src);
 		}
 		$scope.games = response.data.games;
 	}
