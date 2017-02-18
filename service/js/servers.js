@@ -22,7 +22,6 @@ app.use(function(req,res,next){
     res.setHeader('Access-Control-Allow-Headers','X_Requested-With,content-type ,\
     Authorization');
 		console.log('app.use: ');
-    console.log(req.body);
     next();
 });
 
@@ -145,7 +144,6 @@ apiRouter.post('/authenticate',function(req,res){
 
 apiRouter.use(function(req,res,next){
     console.log('Somebody just came to our app!....use in apiRouter');
-    console.log(req.headers);
     var token = req.body.token  || req.query.token|| req.headers['x-access-token'];
 
     if (token){
@@ -241,6 +239,7 @@ apiRouter.post('/me',function(req,res){
 //get information for the game
 apiRouter.post('/me/getgames',function(req,res){
     var email=req.email;
+    console.log(email);
     sql.connect(sqlconfig,function (err) {
         if(err) {
             console.log(err);
@@ -253,6 +252,7 @@ apiRouter.post('/me/getgames',function(req,res){
             var request = new sql.Request();
             request.query('EXEC ifPlayerExist ' + ' "' + email + '"', function (err, recordset) {
                     if (err) {
+                        console.log(err);
                         res.json({
                             success: false,
                             code:2,
@@ -296,7 +296,7 @@ apiRouter.post('/me/getgames',function(req,res){
     });
     //change the game time
     //TODO
-apiRouter.post('/me/buygames',function(req,res){
+apiRouter.post('/me/updategames',function(req,res){
         var email=req.email;
         sql.connect(sqlconfig,function (err) {
             if(err) {
