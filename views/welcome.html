@@ -1,108 +1,114 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!--local-->
-	<link rel="stylesheet" href="../public/styles/welcome.css"></link>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../public/js/welcome.js"></script>
-	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
-	<!-- bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
-	<!--title-->
-	<title>Welcome to Gameing Group</title>
+    <!--local-->
+    <link rel="stylesheet" href="../public/styles/welcome.css"></link>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/welcome.js"></script>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <!-- bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--title-->
+    <title>Welcome to Gameing Group</title>
 </head>
 <body>
-	
-	<div class="links"><a href="welcome.html">Homepage!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friendlist.html">FriendsList!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="games.html">Games!</a> <div class="user"><div ng-app='get_me' ng-controller = 'me_control'>
-    <h2 class="display-name", ng-model="my_name">Welcome!&nbsp&nbsp {{my_name}}</h2>
-	</div></div>
-	</div>
 
-	<hr>
-	<div class="fight-container" >
-		<h1 class="title">Fight</h1>
-		<table class="table table-hover">
-			<tr>
-				<td>
-					<p class = "date"> 2017-01-05 </p>
-				</td>
-				<td>
-					<img src="../public/images/Ctouma.jpg" alt="Ctouma" width="384" height="216">
-					<div class ="C-description">Touma community</div> 
-				</td>
-				<td>
-					<img src="../public/images/Csetsuna.jpg" alt="Csetsuna" width="384" height="216">
-					<div class ="C-description">Setsuna community</div> 
-				</td>
-				<td>
-					<p class="result">Touma community Win!</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p class = "date"> 2017-01-12 </p>
-				</td>
-				<td>
-					<img src="../public/images/Cbilibili.jpg" alt="Cbilibili" width="384" height="216">
-					<div class ="C-description">Bilibili community</div> 
-				</td>
-				<td>
-					<img src="../public/images/Cacfun.jpg" alt="Ccafun" width="384" height="216">
-					<div class ="C-description">Acfun community</div> 
-				</td>
-				<td>
-					<p class="result">Bilibili community Win!</p>
-				</td>
-			</tr>
-			<tr>
-				<td>
-					<p class = "date"> 2017-01-13 </p>
-				</td>
-				<td>
-					<img src="../public/images/Cdota2.jpg" alt="Cdota2" width="384" height="216">
-					<div class ="C-description">Dota2 community</div> 
-				</td>
-				<td>
-					<img src="../public/images/Clol.png" alt="CLOL" width="384" height="216">
-					<div class ="C-description">LoL community</div> 
-				</td>
-				<td>
-					<p class="result">Dota2 community Win!</p>
-				</td>
-			</tr>
-		</table>
-	</div>
-	<script>
-	var app2 = angular.module('get_me', []);
-app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
-				console.log("test");
-				var token = $window.localStorage.getItem('token');
-				console.log(token);
-				
-				$http({
-method: 'POST',
-url: 'http://localhost:8080/api/me',
-transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        return str.join("&");
-    },
-data: {"token":token},
-headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-}).then(function successCallback(response){
-	console.log(response);
-	if (response.data.code == 0){
-		$scope.my_name = response.data.nickname;
-	}
-});
- 
-		}
-	]);
-	
-	</script>
-	
-	
+<div class="links"><a href="welcome.html">Homepage!</a>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+    <a href="friendlist.html">FriendsList!</a>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a
+            href="games.html">Games!</a>
+    <div class="user">
+        <div ng-app='get_me' ng-controller='me_control'>
+            <h2 class="display-name" , ng-model="my_name">Welcome!&nbsp&nbsp {{my_name}}</h2>
+        </div>
+    </div>
+</div>
+
+<hr>
+<div class="fight-container">
+    <h1 class="title">Fight</h1>
+    <table class="table table-hover">
+        <tr>
+            <td>
+                <p class="date"> 2017-01-05 </p>
+            </td>
+            <td>
+                <img src="../public/images/Ctouma.jpg" alt="Ctouma" width="384" height="216">
+                <div class="C-description">Touma community</div>
+            </td>
+            <td>
+                <img src="../public/images/Csetsuna.jpg" alt="Csetsuna" width="384" height="216">
+                <div class="C-description">Setsuna community</div>
+            </td>
+            <td>
+                <p class="result">Touma community Win!</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="date"> 2017-01-12 </p>
+            </td>
+            <td>
+                <img src="../public/images/Cbilibili.jpg" alt="Cbilibili" width="384" height="216">
+                <div class="C-description">Bilibili community</div>
+            </td>
+            <td>
+                <img src="../public/images/Cacfun.jpg" alt="Ccafun" width="384" height="216">
+                <div class="C-description">Acfun community</div>
+            </td>
+            <td>
+                <p class="result">Bilibili community Win!</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p class="date"> 2017-01-13 </p>
+            </td>
+            <td>
+                <img src="../public/images/Cdota2.jpg" alt="Cdota2" width="384" height="216">
+                <div class="C-description">Dota2 community</div>
+            </td>
+            <td>
+                <img src="../public/images/Clol.png" alt="CLOL" width="384" height="216">
+                <div class="C-description">LoL community</div>
+            </td>
+            <td>
+                <p class="result">Dota2 community Win!</p>
+            </td>
+        </tr>
+    </table>
+</div>
+<script>
+    var app2 = angular.module('get_me', []);
+    app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+        console.log("test");
+        var token = $window.localStorage.getItem('token');
+        console.log(token);
+
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/api/me',
+            transformRequest: function (obj) {
+                var str = [];
+                for (var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: {"token": token},
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function successCallback(response) {
+            console.log(response);
+            if (response.data.code == 0) {
+                $scope.my_name = response.data.nickname;
+            }
+        });
+
+    }
+    ]);
+
+</script>
+
+
 </body>
 </html>
