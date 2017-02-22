@@ -30,12 +30,13 @@
         <input type="password" name="password" id="password" ng-model="fields.Password">
     </p>
 
-    <div ng-model = 'something'>{{something}}</div>
+
     <p>
         <input type="submit" name="submit" id="submit" value="Submit">
     </p>
 </form>
-
+<br>
+<a href = "./register.html">Haven't register?</a>
 <script>
 
     var app = angular.module('my-app', []);
@@ -47,6 +48,7 @@
             var temp =$scope.fields.Username+$scope.fields.Password;
             temp = CryptoJS.SHA1(temp).toString();
             console.log(temp);
+            data = temp;
             $http({
                 method: 'POST',
                 url: 'http://localhost:8080/api/authenticate',

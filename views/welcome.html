@@ -26,6 +26,14 @@
         </div>
     </div>
 </div>
+<div id = "change" ng-app="change" ng-controller="change_control">
+    <br>Change Nickname &nbsp &nbsp
+    <form class="wrapper">
+        <input type="text" ng-model="Nickname"/>
+        <button ng-click="Change()"> change</button>
+        {{Nickname}}
+    </form>
+</div>
 
 
 <hr>
@@ -109,6 +117,43 @@
 
     }
     ]);
+
+    var app3 = angular.module('change', []);
+    var data;
+
+    app3.controller('change_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+
+        $scope.addFriend = function () {
+            data = $scope.Nickname;
+            console.log(data);
+            var token = $window.localStorage.getItem('token');
+            console.log(token);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/api/me/change',
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+                data: {"token": token, "Nicikname": data},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function successCallback(response) {
+                console.log(response);
+                if (response.data.code == 0) {
+                    alert("Nickname changed successfully");
+                }
+            });
+
+
+        };
+
+    }
+    ]);
+
+
+    angular.bootstrap(document.getElementById("change"), ['change']);
 
 </script>
 
