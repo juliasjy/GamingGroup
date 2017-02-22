@@ -1,17 +1,61 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<!--local-->
-	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../public/js/games.js"></script>
-	<!-- bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-		<link rel="stylesheet" href="../public/styles/games.css"></link>
-	<!--title-->
-	<title>Your Games</title>
+    <!--local-->
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="../public/js/games.js"></script>
+    <!-- bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../public/styles/games.css"></link>
+    <!--title-->
+    <title>Your Games</title>
 </head>
 <body>
+<<<<<<< HEAD
+<div class="links"><a href="welcome.html">Homepage!</a>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a
+            href="friendlist.html">FriendsList!</a>
+    &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a
+            href="games.html">Games!</a>
+    <div class="user">
+        <div id='get_me' ng-app='get_me' ng-controller='me_control'>
+            <h2 class="display-name" , ng-model="my_name">Welcome!&nbsp&nbsp {{my_name}}</h2>
+        </div>
+    </div>
+</div>
+<hr>
+
+
+<div class="game-table-container" id='buy_games' ng-app='buy_game' ng-controller='buy_control'>
+    <h1 class="title">Games</h1>
+    <form>
+        <input type="text" ng-model="fields.game"/>{{fields.game}}
+        <button class="buy-button" ng-click="buy_games()">Buy</button>
+
+    </form>
+</div>
+<hr>
+
+<div id='get_games' ng-app='get-games' ng-controller='get-control'>
+
+    <table class="table table-hover">
+        <tbody ng:repeat="x in games">
+        <tr>
+            <td>
+                <img ng-src={{x.src}} alt="HTML5 Icon" width="384" height="216">
+            </td>
+            <td>{{x.GName}}</td>
+            <td>{{x.Hours}}</td>
+        </tr>
+
+        </tbody>
+
+
+    </table>
+</div>
+<button class="recommand-button" type="submit">Recommend games</button>
+
 	<div class="links"><a href="welcome.html">Homepage!</a>
 	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friendlist.html">FriendsList!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="games.html">Games!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="communities.html">Communities!</a>
 	<div class="user"><div id='get_me' ng-app='get_me' ng-controller = 'me_control'>
@@ -45,111 +89,108 @@
 		</table>
 	</div>
 	<button class="recommand-button" type="submit">Recommend games</button>
+
 <script>
 
-var app2 = angular.module('get_me', []);
+    var app2 = angular.module('get_me', []);
 
-app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
-				
-				
-				var token = $window.localStorage.getItem('token');
-				
-				$http({
-method: 'POST',
-url: 'http://localhost:8080/api/me',
-transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        return str.join("&");
-    },
-data: {"token":token},
-headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-}).then(function successCallback(response){
-	
-	if (response.data.code == 0){
-		$scope.my_name = response.data.nickname;
-		
-		
-		var app = angular.module('get-games', []);
-
-app.controller('get-control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
-
-			
-				var token = $window.localStorage.getItem('token');
-				
-				$http({
-method: 'POST',
-url: 'http://localhost:8080/api/me/getgames',
-transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        return str.join("&");
-    },
-data: {"token":token},
-headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-}).then(function successCallback(response){
-	
-	if (response.data.code == 0){
-	for(var i=0;i<response.data.games.length;i++){
-			response.data.games[i].src="../public/images/games/"+response.data.games[i].GName+".jpg";
-		}
-		$scope.games = response.data.games;
-	}
-});
-			
-
-		}
-	]);
-angular.bootstrap(document.getElementById("get_games"), ['get-games']);
-		
-		
-	}
-});
- 
-		}
-	]);
-	
+    app2.controller('me_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
 
 
-		var app3 = angular.module('buy_game', []);
+        var token = $window.localStorage.getItem('token');
 
-app3.controller('buy_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+        $http({
+            method: 'POST',
+            url: 'http://localhost:8080/api/me',
+            transformRequest: function (obj) {
+                var str = [];
+                for (var p in obj)
+                    str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                return str.join("&");
+            },
+            data: {"token": token},
+            headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+        }).then(function successCallback(response) {
 
-			$scope.buy_games = function () {
-				var token = $window.localStorage.getItem('token');
-				var data = $scope.game;
-				$http({
-method: 'POST',
-url: 'http://localhost:8080/api/me/buygames',
-transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        return str.join("&");
-    },
-data: {"token":token,"gname":data},
-headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-}).then(function successCallback(response){
-	console.log(response);
-	if (response.data.code == 0){
-		alert("1");
-	}
-});
-			};
-
-		}
-	]);
+            if (response.data.code == 0) {
+                $scope.my_name = response.data.nickname;
 
 
+                var app = angular.module('get-games', []);
 
-angular.bootstrap(document.getElementById("buy_games"), ['buy_game']);
+                app.controller('get-control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
 
-		
 
-	
-	
-	</script>
+                    var token = $window.localStorage.getItem('token');
+
+                    $http({
+                        method: 'POST',
+                        url: 'http://localhost:8080/api/me/getgames',
+                        transformRequest: function (obj) {
+                            var str = [];
+                            for (var p in obj)
+                                str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                            return str.join("&");
+                        },
+                        data: {"token": token},
+                        headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+                    }).then(function successCallback(response) {
+
+                        if (response.data.code == 0) {
+                            for (var i = 0; i < response.data.games.length; i++) {
+                                response.data.games[i].src = "../public/images/games/" + response.data.games[i].GName + ".jpg";
+                            }
+                            $scope.games = response.data.games;
+                        }
+                    });
+
+
+                }
+                ]);
+                angular.bootstrap(document.getElementById("get_games"), ['get-games']);
+
+
+            }
+        });
+
+    }
+    ]);
+
+
+    var app3 = angular.module('buy_game', []);
+
+    app3.controller('buy_control', ['$scope', '$window', '$http', function ($scope, $window, $http) {
+
+        $scope.buy_games = function () {
+            var token = $window.localStorage.getItem('token');
+            var data = $scope.fields.game;
+            console.log(data);
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/api/me/buygames',
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+                data: {"token": token, "gname": data},
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function successCallback(response) {
+                console.log(response);
+                if (response.data.code == 0) {
+                    alert("1");
+                }
+            });
+        };
+
+    }
+    ]);
+
+
+    angular.bootstrap(document.getElementById("buy_games"), ['buy_game']);
+
+
+</script>
 </body>
 </html>

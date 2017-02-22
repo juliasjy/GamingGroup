@@ -1,87 +1,81 @@
 <!doctype html>
 <html>
 <head>
-<!--local-->
-	<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="../public/js/games.js"></script>
-	<!-- bootstrap-->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
-		<link rel="stylesheet" href="../public/styles/games.css"></link>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
-	<!--title-->
-	
-<meta charset="utf-8">
-<title>Login</title>
-<script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <!--local-->
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="D:\Program Files\nodejs\node_modules\npm\node_modules\crypto-js\crypto-js.js"></script>
+    <script type="text/javascript" src="../public/js/games.js"></script>
+    <!-- bootstrap-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
+    <link rel="stylesheet" href="../public/styles/games.css"></link>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" type="text/javascript"></script>
+    <!--title-->
+
+    <meta charset="utf-8">
+    <title>Login</title>
+    <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
 </head>
 
 <body>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
-<form id="Login" name = "LoginMsg" method = "POST" ng-submit="submitLogin()" ng-app = "my-app" ng-controller = "myCtrl">
-<p>
-  <label for="textfield">Login:</label>
-  <input type="text" name="textfield" id="textfield" ng-model = "fields.Username">
-</p>
-<p>
-  <label for="password">Password:</label>
-  <input type="password" name="password" id="password" ng-model = "fields.Password">
-</p>
+<form id="Login" name="LoginMsg" method="POST" ng-submit="submitLogin()" ng-app="my-app" ng-controller="myCtrl">
+    <p>
+        <label for="textfield">Login:</label>
+        <input type="text" name="textfield" id="textfield" ng-model="fields.Username">
+    </p>
+    <p>
+        <label for="password">Password:</label>
+        <input type="password" name="password" id="password" ng-model="fields.Password">
+    </p>
 
-{{fields}}
-<p>
-  <input type="submit" name="submit" id="submit" value="Submit" >
-</p>
+
+    <p>
+        <input type="submit" name="submit" id="submit" value="Submit">
+    </p>
 </form>
-
+<br>
+<a href = "./register.html">Haven't register?</a>
 <script>
 
-var app = angular.module('my-app',[]);
-var data;
-app.factory('myService',function(){
-var savedData = {};
-function set(data) {
-	savedData = data;
-}
-function get() {
-	return savedData;
-}
-return {
-	set:set,
-	get:get
-}
-});
-app.controller('myCtrl',['$scope', '$http','$window',function($scope,$http,$window){
-	$scope.submitLogin = function(){
-	data = $scope.fields;
-		
-$http({
-method: 'POST',
-url: 'http://localhost:8080/api/authenticate',
-transformRequest: function(obj) {
-        var str = [];
-        for(var p in obj)
-        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
-        return str.join("&");
-    },
-data: data,
-headers: {'Content-Type': 'application/x-www-form-urlencoded'}
-}).then(function successCallback(response){
-	if (response.data.code == 0){
-		$window.location.href='welcome.html';
-		$window.localStorage.setItem('token', response.data.token);
-		console.log($window.localStorage.getItem('token'));
-	}
-	else{
-		alert(response.data.message);
-		}
-});	
-	}
-}]);
+    var app = angular.module('my-app', []);
+    var data;
+    app.controller('myCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
 
+        $scope.submitLogin = function () {
+            data = $scope.fields;
+            var temp =$scope.fields.Username+$scope.fields.Password;
+            temp = CryptoJS.SHA1(temp).toString();
+            console.log(temp);
+            data = temp;
+            $http({
+                method: 'POST',
+                url: 'http://localhost:8080/api/authenticate',
+                transformRequest: function (obj) {
+                    var str = [];
+                    for (var p in obj)
+                        str.push(encodeURIComponent(p) + "=" + encodeURIComponent(obj[p]));
+                    return str.join("&");
+                },
+                data: data,
+                headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+            }).then(function successCallback(response) {
+                if (response.data.code == 0) {
+                    $window.location.href = 'welcome.html';
+                    $window.localStorage.setItem('token', response.data.token);
+
+                }
+                else {
+                    alert(response.data.message);
+                }
+            });
+        }
+    }]);
 
 
 </script>
+
+<script src="C:\Users\zhaot1\Desktop\CSSE\CSSE333\FinalProject\CryptoJS v3.1.2\components\sha1.js"></script>
 </body>
 </html>
