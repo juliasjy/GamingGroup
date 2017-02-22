@@ -287,9 +287,9 @@ apiRouter.post('/me/getgames', function (req, res) {
         }
     });
 });
-//change the game time
+//change the user's nickname
 //TODO
-apiRouter.post('/me/updategames', function (req, res) {
+apiRouter.post('/me/change', function (req, res) {
     var email = req.email;
     sql.connect(sqlconfig, function (err) {
         if (err) {
@@ -312,8 +312,7 @@ apiRouter.post('/me/updategames', function (req, res) {
                         var test = JSON.stringify(recordset[0]);
                         if (test.includes('1')) {
                             var loginrequest = new sql.Request();
-                            //TODO: change the PROCUDURE
-                            loginrequest.query('EXEC playerLogin ' + '"' + req.body.email + '",' + req.body.password, function (err, recordset) {
+                            loginrequest.query('EXEC changeName ' + '"' + email+ '","' + req.body.password+'"', function (err, recordset) {
                                 if (err) {
                                     res.json({
                                         success: false,
@@ -954,41 +953,6 @@ publicRouter.get('/comments/:game_name', function (req, res) {
     });
 });
 
-//get all fight record
-//fights:Array:FighterName,FighteeName,Date,Result
-publicRouter.get('/community_fight', function (req, res) {
-    sql.connect(sqlconfig, function (err) {
-        if (err) {
-            console.log(err);
-            res.json({
-                success: false,
-                code: 1,
-                message: 'Connect failed'
-            });
-        } else {
-            var loginrequest = new sql.Request();
-            loginrequest.query('EXEC publicFight', function (err, recordset) {
-                if (err) {
-                    res.json({
-                        success: false,
-                        code: 4,
-                        message: 'SQL UNKNOWN error'
-
-                    });
-                } else {
-                    res.json({
-                        success: true,
-                        code: 0,
-                        message: 'Get your game\'s comments',
-                        fights: recordset
-                    });
-
-                }
-
-            });
-        }
-    });
-});
 
 app.use('/api', apiRouter);
 app.use('/info', publicRouter);
