@@ -4,6 +4,7 @@
     <!--local-->
     <script src="http://cdn.static.runoob.com/libs/angular.js/1.4.6/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="D:\Program Files\nodejs\node_modules\npm\node_modules\crypto-js\crypto-js.js"></script>
     <script type="text/javascript" src="../public/js/games.js"></script>
     <!-- bootstrap-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"></link>
@@ -29,7 +30,7 @@
         <input type="password" name="password" id="password" ng-model="fields.Password">
     </p>
 
-    {{fields}}
+    <div ng-model = 'something'>{{something}}</div>
     <p>
         <input type="submit" name="submit" id="submit" value="Submit">
     </p>
@@ -39,26 +40,13 @@
 
     var app = angular.module('my-app', []);
     var data;
-    app.factory('myService', function () {
-        var savedData = {};
-
-        function set(data) {
-            savedData = data;
-        }
-
-        function get() {
-            return savedData;
-        }
-
-        return {
-            set: set,
-            get: get
-        }
-    });
     app.controller('myCtrl', ['$scope', '$http', '$window', function ($scope, $http, $window) {
+
         $scope.submitLogin = function () {
             data = $scope.fields;
-
+            var temp =$scope.fields.Username+$scope.fields.Password;
+            temp = CryptoJS.SHA1(temp).toString();
+            console.log(temp);
             $http({
                 method: 'POST',
                 url: 'http://localhost:8080/api/authenticate',
@@ -74,7 +62,7 @@
                 if (response.data.code == 0) {
                     $window.location.href = 'welcome.html';
                     $window.localStorage.setItem('token', response.data.token);
-                    console.log($window.localStorage.getItem('token'));
+
                 }
                 else {
                     alert(response.data.message);
@@ -85,5 +73,7 @@
 
 
 </script>
+
+<script src="C:\Users\zhaot1\Desktop\CSSE\CSSE333\FinalProject\CryptoJS v3.1.2\components\sha1.js"></script>
 </body>
 </html>

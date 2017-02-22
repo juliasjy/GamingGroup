@@ -12,6 +12,7 @@
     <title>Your Games</title>
 </head>
 <body>
+<<<<<<< HEAD
 <div class="links"><a href="welcome.html">Homepage!</a>
     &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a
             href="friendlist.html">FriendsList!</a>
@@ -54,6 +55,41 @@
     </table>
 </div>
 <button class="recommand-button" type="submit">Recommend games</button>
+=======
+	<div class="links"><a href="welcome.html">Homepage!</a>
+	&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="friendlist.html">FriendsList!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="games.html">Games!</a> &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp <a href="communities.html">Communities!</a>
+	<div class="user"><div id='get_me' ng-app='get_me' ng-controller = 'me_control'>
+    <h2 class="display-name", ng-model="my_name">Welcome!&nbsp&nbsp {{my_name}}</h2>
+	</div></div>
+	</div>
+	<hr>
+
+
+	<div class="game-table-container" id='buy_games' ng-app = 'buy_game' ng-controller = 'buy_control'>
+		<h1 class="title">Games</h1>
+			<form>
+		<input type="text"   ng-model="fields.game" />{{fields.game}}
+		<button class="buy-button" ng-click="buy_games()">Buy</button>
+		
+		</form>
+	</div>
+	<hr>
+	
+		<div id='get_games' ng-app ='get-games' ng-controller='get-control' >
+		
+		<table class="table table-hover">
+			<tbody ng:repeat="x in games">
+    <tr><td>
+				<img ng-src={{x.src}} alt="HTML5 Icon" width="384" height="216">	
+				</td><td>{{x.GName}}</td><td>{{x.Hours}}</td></tr>
+    
+  </tbody>
+		 
+			
+		</table>
+	</div>
+	<button class="recommand-button" type="submit">Recommend games</button>
+>>>>>>> e13f16df5747bacee9e145ef26b1b631004961fd
 <script>
 
     var app2 = angular.module('get_me', []);
